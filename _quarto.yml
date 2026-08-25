@@ -11,6 +11,8 @@ website:
   favicon: assets/logos/ufc-favicon.png
   navbar:
     pinned: true
+    background: "#ffffff"
+    foreground: "#17324d"
     left:
       - text: "Início"
         href: index.qmd
@@ -33,7 +35,7 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme: default
     css: assets/css/styles.css
     toc: true
     toc-depth: 3

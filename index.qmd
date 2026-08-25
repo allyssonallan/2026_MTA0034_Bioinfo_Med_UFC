@@ -38,11 +38,12 @@ Capacitar os estudantes a compreender e aplicar conceitos, métodos e ferramenta
 
 ### Allysson Allan de Farias
 
-Adicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.
+Biólogo, mestre em Arqueologia e doutor em Genética. Atua há 15 anos na interface entre bioinformática, genômica e medicina de precisão. Professor Visitante do Programa de Pós-Graduação em Medicina Translacional da Universidade Federal do Ceará (UFC) e pesquisador do Laboratório de Bioarqueologia Translacional (LABBAT).
 
 ::: {.faculty-links}
-[⌁ CV Lattes](https://lattes.cnpq.br/SEU_ID){.faculty-link}
-[◎ Instagram do laboratório](https://instagram.com/SEU_LAB){.faculty-link}
+[CV](https://lattes.cnpq.br/0112236864523667){.faculty-link}
+[LABBAT](https://instagram.com/labbat.npdm.ufc){.faculty-link}
+[GitHub](https://github.com/allyssonallan){.faculty-link}
 :::
 :::
 
@@ -51,11 +52,11 @@ Adicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.
 
 ### Felipe Pantoja Mesquita
 
-Adicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.
+Biomédico, mestre em Genética e doutor em Farmacologia. Professor do Programa de Pós-Graduação em Microbiologia Médica da Universidade Federal do Ceará (UFC) e pesquisador do Laboratório de Farmacogenética (Farmagen).
 
 ::: {.faculty-links}
-[⌁ CV Lattes](https://lattes.cnpq.br/SEU_ID){.faculty-link}
-[◎ Instagram do laboratório](https://instagram.com/SEU_LAB){.faculty-link}
+[CV](https://lattes.cnpq.br/3626590016067119){.faculty-link}
+[Farmagen](https://instagram.com/farmagen.ufc){.faculty-link}
 :::
 :::
 
@@ -64,11 +65,11 @@ Adicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.
 
 ### Thalita Basso Scandolara
 
-Adicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.
+Farmacêutica, mestre em Ciências Biológicas aplicadas à saúde e doutora em Genética. Pós-doutoranda na Universidade Federal do Ceará (UFC) e pesquisadora do Laboratório de Oncologia Experimental (LOE).
 
 ::: {.faculty-links}
-[⌁ CV Lattes](https://lattes.cnpq.br/SEU_ID){.faculty-link}
-[◎ Instagram do laboratório](https://instagram.com/SEU_LAB){.faculty-link}
+[CV](https://lattes.cnpq.br/7077767478457224){.faculty-link}
+[LOE](https://instagram.com/laboratorioloe){.faculty-link}
 :::
 :::
 :::
@@ -77,22 +78,28 @@ Adicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.
 
 ::: {.logo-grid}
 ::: {.logo-item}
-![](assets/logos/ufc.png){.logo-wide fig-alt="Universidade Federal do Ceará"}
+[![](assets/logos/ufc.png){.logo-wide fig-alt="Universidade Federal do Ceará"}](https://www.ufc.br/){.logo-main-link aria-label="Acessar o site da Universidade Federal do Ceará"}
+[Site institucional](https://www.ufc.br/){.institution-link}
 :::
 ::: {.logo-item}
-![](assets/logos/ppgmt_ufc.jpg){.logo-square fig-alt="Programa de Pós-Graduação em Medicina Translacional da UFC"}
+[![](assets/logos/ppgmt_ufc.jpg){.logo-square fig-alt="Programa de Pós-Graduação em Medicina Translacional da UFC"}](https://medicinatranslacional.ufc.br/pt/){.logo-main-link aria-label="Acessar o site do Programa de Pós-Graduação em Medicina Translacional"}
+[Site do programa](https://medicinatranslacional.ufc.br/pt/){.institution-link}
 :::
 ::: {.logo-item}
-![](assets/logos/logo_npdm.webp){fig-alt="Núcleo de Pesquisa e Desenvolvimento de Medicamentos"}
+[![](assets/logos/logo_npdm.webp){fig-alt="Núcleo de Pesquisa e Desenvolvimento de Medicamentos"}](https://npdm.ufc.br/pt/){.logo-main-link aria-label="Acessar o site do Núcleo de Pesquisa e Desenvolvimento de Medicamentos"}
+[Site institucional](https://npdm.ufc.br/pt/){.institution-link}
 :::
 ::: {.logo-item}
-![](assets/logos/farmagen-mark.webp){.logo-wide fig-alt="Laboratório de Farmacogenética"}
+[![](assets/logos/farmagen-mark.webp){.logo-wide fig-alt="Laboratório de Farmacogenética"}](https://instagram.com/farmagen.ufc){.logo-main-link aria-label="Acessar o Instagram do Laboratório de Farmacogenética"}
+[Instagram](https://instagram.com/farmagen.ufc){.institution-link}
 :::
 ::: {.logo-item}
-![](assets/logos/labbat.jpeg){.logo-square fig-alt="Laboratório de Bioarqueologia Translacional"}
+[![](assets/logos/labbat.jpeg){.logo-square fig-alt="Laboratório de Bioarqueologia Translacional"}](https://instagram.com/labbat.npdm.ufc){.logo-main-link aria-label="Acessar o Instagram do Laboratório de Bioarqueologia Translacional"}
+[Instagram](https://instagram.com/labbat.npdm.ufc){.institution-link}
 :::
 ::: {.logo-item}
-![](assets/logos/loe_ufc-mark.webp){.logo-wide fig-alt="Laboratório de Oncologia Experimental da UFC"}
+[![](assets/logos/loe_ufc-mark.webp){.logo-wide fig-alt="Laboratório de Oncologia Experimental da UFC"}](https://instagram.com/laboratorioloe){.logo-main-link aria-label="Acessar o Instagram do Laboratório de Oncologia Experimental"}
+[Instagram](https://instagram.com/laboratorioloe){.institution-link}
 :::
 :::
 
@@ -107,8 +114,9 @@ Aula 01
 ::: {.schedule-content}
 ### Conceitos básicos de genética
 
-Organização do genoma humano, expressão gênica, mutação, recombinação, deriva genética, seleção, ancestralidade e consanguinidade.
+Organização do genoma humano e UCSC genome browser.
 
+[Abrir slides →](recursos/Aula1_bioinfo_medicina_intro_genome_browser.pdf){.schedule-link}
 <span class="status status-live">Conteúdo liberado</span>
 :::
 :::

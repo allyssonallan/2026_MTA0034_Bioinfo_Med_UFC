@@ -16,11 +16,11 @@ A página completa da aula ainda não está liberada. O tutorial de preparação
 :::
 ::: {.resource-box}
 **Slides**  
-<span class="muted">Liberar após a aula</span>
+<span class="muted">Liberado após a aula</span>
 :::
 ::: {.resource-box}
 **Exercícios**  
-<span class="muted">Liberar após a aula</span>
+<span class="muted">Liberado após a aula</span>
 :::
 :::
 :::

@@ -7,16 +7,15 @@
 
 **24 de agosto de 2026**
 
-Organização do genoma humano, expressão gênica, mutação, recombinação, deriva genética, seleção, ancestralidade e consanguinidade.
+Organização do genoma humano e UCSC genome browser.
 
 ::: {.resource-grid}
-::: {.resource-box}
-**Slides**  
-<span class="muted">Adicionar URL dos slides</span>
+::: {.resource-box} 
+[Slides](recursos/Aula1_bioinfo_medicina_intro_genome_browser.pdf){.text-link}
 :::
 ::: {.resource-box}
 **Exercícios**  
-<span class="muted">Adicionar URL dos exercícios</span>
+<span class="muted">Última página dos slides</span>
 :::
 ::: {.resource-box}
 **Apoio**  
