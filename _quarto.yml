@@ -8,7 +8,7 @@ website:
   site-url: "https://allyssonallan.github.io/2026_MTA0034_Bioinfo_Med_UFC/"
   repo-url: "https://github.com/allyssonallan/2026_MTA0034_Bioinfo_Med_UFC"
   repo-actions: [edit, source, issue]
-  favicon: assets/logos/ufc_placeholder.svg
+  favicon: assets/logos/ufc-favicon.png
   navbar:
     pinned: true
     left:

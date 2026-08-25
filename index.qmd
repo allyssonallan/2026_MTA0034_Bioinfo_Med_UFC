@@ -5,24 +5,25 @@ page-layout: full
 format:
   html:
     toc: false
+    title-block-style: plain
 ---
 
-::: {.hero-course}
-::: {.hero-kicker}
+::: {.course-intro}
+::: {.course-kicker}
 Programa de Pós-Graduação em Medicina Translacional · Universidade Federal do Ceará
 :::
 
-# Bioinformática aplicada à medicina
-
 Uma disciplina prática para conectar genética, programação em R, dados ômicos e implementação clínica.
 
-::: {.hero-meta}
+::: {.course-meta}
 <span>24 de agosto a 21 de setembro de 2026</span>
 <span>Segundas e quartas</span>
 <span>8h às 12h</span>
 :::
 
+::: {.course-actions}
 [Ver cronograma](#cronograma){.btn .btn-primary} [Abrir tutoriais](tutoriais/index.qmd){.btn .btn-outline-primary}
+:::
 :::
 
 ## Objetivo
@@ -33,7 +34,7 @@ Capacitar os estudantes a compreender e aplicar conceitos, métodos e ferramenta
 
 ::: {.faculty-grid}
 ::: {.faculty-card}
-![](assets/professores/allysson_placeholder.svg){.faculty-photo fig-alt="Espaço para foto de Allysson Allan de Farias"}
+![](assets/professores/allysson-card.webp){.faculty-photo fig-alt="Retrato de Allysson Allan de Farias"}
 
 ### Allysson Allan de Farias
 
@@ -46,7 +47,7 @@ Adicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.
 :::
 
 ::: {.faculty-card}
-![](assets/professores/felipe_placeholder.svg){.faculty-photo fig-alt="Espaço para foto de Felipe Pantoja Mesquita"}
+![](assets/professores/felipe-card.webp){.faculty-photo fig-alt="Retrato de Felipe Pantoja Mesquita"}
 
 ### Felipe Pantoja Mesquita
 
@@ -59,7 +60,7 @@ Adicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.
 :::
 
 ::: {.faculty-card}
-![](assets/professores/thalita_placeholder.svg){.faculty-photo fig-alt="Espaço para foto de Thalita Basso Scandolara"}
+![](assets/professores/thalita-card.webp){.faculty-photo fig-alt="Thalita Basso Scandolara em atividade no laboratório"}
 
 ### Thalita Basso Scandolara
 
@@ -74,14 +75,25 @@ Adicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.
 
 ## Instituições e laboratórios
 
-Substitua os cinco arquivos SVG abaixo pelos logos oficiais mantendo os mesmos nomes, ou altere os caminhos nesta seção.
-
-::: {.logo-strip}
-![](assets/logos/ufc_placeholder.svg){fig-alt="Logo UFC"}
-![](assets/logos/npdm_placeholder.svg){fig-alt="Logo NPDM"}
-![](assets/logos/lab1_placeholder.svg){fig-alt="Logo laboratório participante 1"}
-![](assets/logos/lab2_placeholder.svg){fig-alt="Logo laboratório participante 2"}
-![](assets/logos/lab3_placeholder.svg){fig-alt="Logo laboratório participante 3"}
+::: {.logo-grid}
+::: {.logo-item}
+![](assets/logos/ufc.png){.logo-wide fig-alt="Universidade Federal do Ceará"}
+:::
+::: {.logo-item}
+![](assets/logos/ppgmt_ufc.jpg){.logo-square fig-alt="Programa de Pós-Graduação em Medicina Translacional da UFC"}
+:::
+::: {.logo-item}
+![](assets/logos/logo_npdm.webp){fig-alt="Núcleo de Pesquisa e Desenvolvimento de Medicamentos"}
+:::
+::: {.logo-item}
+![](assets/logos/farmagen-mark.webp){.logo-wide fig-alt="Laboratório de Farmacogenética"}
+:::
+::: {.logo-item}
+![](assets/logos/labbat.jpeg){.logo-square fig-alt="Laboratório de Bioarqueologia Translacional"}
+:::
+::: {.logo-item}
+![](assets/logos/loe_ufc-mark.webp){.logo-wide fig-alt="Laboratório de Oncologia Experimental da UFC"}
+:::
 :::
 
 ## Cronograma {#cronograma}

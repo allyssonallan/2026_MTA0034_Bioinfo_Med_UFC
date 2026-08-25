@@ -24,9 +24,15 @@ quarto render
 
 ## Antes do primeiro push
 
-Substitua `SEU_USUARIO` em `_quarto.yml` pelo usuário ou organização do GitHub. Depois ajuste os links de CV Lattes e Instagram em `index.qmd`.
+O endereço do repositório e do site já usa o usuário `allyssonallan` em `_quarto.yml`. Ajuste apenas os links de CV Lattes e Instagram em `index.qmd`.
 
-Troque os arquivos de `assets/logos/` pelos logos oficiais e os arquivos de `assets/professores/` pelas fotografias. Você pode manter os mesmos nomes de arquivo para não alterar o código.
+As fotografias e os logos usados pela página ficam em `assets/`. A pasta `_site/` é gerada novamente a cada renderização e não deve receber edições manuais.
+
+Se `_site/` já estiver sendo rastreada pelo Git, remova-a do índice uma única vez (os arquivos locais permanecem no computador):
+
+```bash
+git rm -r --cached _site
+```
 
 ## Como liberar uma nova aula
 
@@ -50,15 +56,16 @@ Copie `tutoriais/modelo_tutorial.qmd`, renomeie o arquivo e adicione o novo tuto
 
 ## Publicar no GitHub Pages
 
-1. Crie o repositório `2026_MTA0034_Bioinfo_Med_UFC` no GitHub.
-2. Faça o primeiro push para a branch `main`.
-3. Em **Settings → Pages**, selecione **Source: GitHub Actions**, se essa opção ainda não estiver ativa.
-4. O workflow `.github/workflows/publish.yml` renderiza o Quarto e publica `_site` automaticamente em cada push para `main`.
+1. No GitHub, abra **Settings → Pages** e selecione **Source: GitHub Actions**.
+2. Faça commit das alterações e envie a branch `main` com `git push origin main`.
+3. Acompanhe o workflow **Publicar site Quarto** na aba **Actions**.
+
+O arquivo `.github/workflows/publish.yml` renderiza o projeto e publica `_site/` automaticamente em cada push para `main`. Ele também pode ser iniciado manualmente pela aba **Actions**.
 
 O endereço padrão será:
 
 ```text
-https://SEU_USUARIO.github.io/2026_MTA0034_Bioinfo_Med_UFC/
+https://allyssonallan.github.io/2026_MTA0034_Bioinfo_Med_UFC/
 ```
 
 ## Estrutura
