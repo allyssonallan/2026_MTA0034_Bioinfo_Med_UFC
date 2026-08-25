@@ -1,0 +1,27 @@
+::: {.lesson-card}
+::: {.lesson-number}
+06
+:::
+::: {.lesson-body}
+### Oncologia de precisão
+
+**14 de setembro de 2026**
+
+Painéis, variantes somáticas, bancos de conhecimento e contexto ambiental.
+
+::: {.resource-grid}
+::: {.resource-box}
+**Slides**  
+[Slides da aula](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Exercícios**  
+[Exercícios](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Apoio**  
+[Material complementar](COLE_AQUI_A_URL)
+:::
+:::
+:::
+:::

@@ -1,0 +1,22 @@
+---
+title: "Avaliação"
+description: "Trabalho final, critérios FAIR e referências para análise estatística em R."
+---
+
+## Trabalho final
+
+O trabalho final será baseado em dados ômicos e deverá apresentar uma pergunta ou hipótese explícita, uma análise estatística apropriada, visualizações produzidas em R e uma interpretação compatível com os dados utilizados.
+
+## Critérios
+
+A avaliação considerará clareza da pergunta, adequação da análise, reprodutibilidade do código, organização dos dados, qualidade das figuras, interpretação e documentação do fluxo de trabalho. A estrutura de arquivos e metadados deverá favorecer os princípios FAIR, isto é, dados e resultados encontráveis, acessíveis, interoperáveis e reutilizáveis.
+
+## Recursos
+
+- [The FAIR Guiding Principles for scientific data management and stewardship](https://www.nature.com/articles/sdata201618)
+- [Analyzing experimental data with a linear model](https://benchbiostats.com/chapters/intro.html)
+- [Scientific Data, 2025, referência indicada na disciplina](https://www.nature.com/articles/s41597-025-04451-9)
+
+## Entrega sugerida
+
+O repositório final pode conter `README.md`, pasta `data` ou instruções para obtenção dos dados, scripts ou documento Quarto, figuras exportadas e um arquivo de ambiente como `renv.lock` quando houver dependências específicas.

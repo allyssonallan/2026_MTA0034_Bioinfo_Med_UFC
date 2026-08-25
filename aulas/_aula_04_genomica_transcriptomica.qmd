@@ -1,0 +1,27 @@
+::: {.lesson-card}
+::: {.lesson-number}
+04
+:::
+::: {.lesson-body}
+### Genômica e transcriptômica
+
+**2 de setembro de 2026**
+
+NGS, fluxos reprodutíveis e análise de expressão gênica diferencial.
+
+::: {.resource-grid}
+::: {.resource-box}
+**Slides**  
+[Slides da aula](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Exercícios**  
+[Exercícios](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Apoio**  
+[Material complementar](COLE_AQUI_A_URL)
+:::
+:::
+:::
+:::

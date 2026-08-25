@@ -1,0 +1,27 @@
+::: {.lesson-card .lesson-next}
+::: {.lesson-number}
+02
+:::
+::: {.lesson-body}
+### Conceitos básicos de programação em R
+
+**26 de agosto de 2026**
+
+A página completa da aula ainda não está liberada. O tutorial de preparação já está disponível para instalação e teste do ambiente.
+
+::: {.resource-grid}
+::: {.resource-box}
+**Preparação**  
+[Instalar R, RStudio e swirl](tutoriais/instalacao_r_rstudio_swirl.qmd)
+:::
+::: {.resource-box}
+**Slides**  
+<span class="muted">Liberar após a aula</span>
+:::
+::: {.resource-box}
+**Exercícios**  
+<span class="muted">Liberar após a aula</span>
+:::
+:::
+:::
+:::

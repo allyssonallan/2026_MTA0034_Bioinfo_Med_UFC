@@ -1,0 +1,27 @@
+::: {.lesson-card .lesson-live}
+::: {.lesson-number}
+01
+:::
+::: {.lesson-body}
+### Conceitos básicos de genética
+
+**24 de agosto de 2026**
+
+Organização do genoma humano, expressão gênica, mutação, recombinação, deriva genética, seleção, ancestralidade e consanguinidade.
+
+::: {.resource-grid}
+::: {.resource-box}
+**Slides**  
+<span class="muted">Adicionar URL dos slides</span>
+:::
+::: {.resource-box}
+**Exercícios**  
+<span class="muted">Adicionar URL dos exercícios</span>
+:::
+::: {.resource-box}
+**Apoio**  
+[Pritchard, 2023](https://web.stanford.edu/group/pritchardlab/HGbook.html)
+:::
+:::
+:::
+:::

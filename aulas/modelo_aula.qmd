@@ -1,0 +1,27 @@
+::: {.lesson-card}
+::: {.lesson-number}
+XX
+:::
+::: {.lesson-body}
+### Título da aula
+
+**DD de mês de 2026**
+
+Resumo do conteúdo.
+
+::: {.resource-grid}
+::: {.resource-box}
+**Slides**  
+[Slides da aula](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Exercícios**  
+[Exercícios](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Apoio**  
+[Material complementar](COLE_AQUI_A_URL)
+:::
+:::
+:::
+:::

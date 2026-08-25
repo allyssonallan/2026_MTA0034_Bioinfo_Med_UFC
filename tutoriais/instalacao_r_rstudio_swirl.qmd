@@ -1,0 +1,114 @@
+---
+title: "Instalação de R, RStudio e swirl"
+subtitle: "Preparação para a Aula 02 · Conceitos básicos de programação em R"
+description: "Guia para preparar o computador para a aula de programação em R."
+---
+
+## Antes da aula
+
+O objetivo é chegar à aula com três componentes funcionando: o R, que executa a linguagem; o RStudio Desktop, que será nosso ambiente de trabalho; e o pacote `swirl`, que permite praticar R diretamente no console.
+
+> O nome do pacote é **swirl**. Ele é frequentemente referido informalmente como SwirlR, mas o comando correto de instalação é `install.packages("swirl")`.
+
+## 1. Instale o R
+
+Acesse o [R Project](https://www.r-project.org/) e escolha um mirror do CRAN. Instale a versão estável adequada ao seu sistema operacional.
+
+Depois da instalação, abra R ou RStudio e execute:
+
+```r
+R.version.string
+```
+
+Você deverá receber uma mensagem informando a versão instalada.
+
+## 2. Instale o RStudio Desktop
+
+Baixe a edição gratuita do [RStudio Desktop](https://posit.co/download/rstudio-desktop/). O R deve estar instalado antes do RStudio.
+
+Ao abrir o RStudio, localize o **Console**. Digite:
+
+```r
+1 + 1
+```
+
+O resultado esperado é `2`.
+
+## 3. Instale o swirl
+
+No Console do RStudio, execute:
+
+```r
+install.packages("swirl")
+```
+
+Depois carregue o pacote e inicie o ambiente interativo:
+
+```r
+library(swirl)
+swirl()
+```
+
+Na primeira execução, o `swirl` poderá oferecer cursos para instalação.
+
+## 4. Instale o curso R Programming
+
+Uma opção adequada para acompanhar o início da disciplina é:
+
+```r
+swirl::install_course("R Programming")
+```
+
+Em seguida:
+
+```r
+library(swirl)
+swirl()
+```
+
+Escolha **R Programming** no menu.
+
+## 5. Faça um teste rápido
+
+Antes da aula, confirme que os quatro comandos abaixo executam sem erro:
+
+```r
+R.version.string
+getwd()
+installed.packages()["swirl", "Version"]
+library(swirl)
+```
+
+## Problemas frequentes
+
+### `there is no package called 'swirl'`
+
+A instalação do pacote não foi concluída. Execute novamente:
+
+```r
+install.packages("swirl")
+```
+
+### O RStudio abre, mas não encontra o R
+
+Reinstale primeiro o R e depois abra novamente o RStudio. Em instalações com múltiplas versões de R, verifique a versão selecionada nas configurações do RStudio.
+
+### O computador é institucional e não permite instalar programas
+
+Use um computador pessoal para a primeira aula, se possível, ou verifique previamente com o suporte de TI se R e RStudio podem ser instalados. Como alternativa temporária, ambientes em nuvem podem ser usados para praticar, mas o curso será organizado pensando em R e RStudio locais.
+
+## Checklist antes de 26 de agosto
+
+- [ ] R instalado
+- [ ] RStudio Desktop instalado
+- [ ] `1 + 1` retorna `2` no Console
+- [ ] pacote `swirl` instalado
+- [ ] `library(swirl)` executa sem erro
+- [ ] curso **R Programming** instalado ou disponível para instalação
+
+## Recursos
+
+- [R Project](https://www.r-project.org/)
+- [RStudio Desktop](https://posit.co/download/rstudio-desktop/)
+- [swirl para estudantes](https://swirlstats.com/students.html)
+- [R for Data Science, 2e](https://r4ds.hadley.nz/)

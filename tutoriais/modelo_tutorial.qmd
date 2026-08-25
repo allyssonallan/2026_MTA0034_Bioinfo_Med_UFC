@@ -1,0 +1,29 @@
+---
+title: "Título do tutorial"
+subtitle: "Aula XX · Tema"
+description: "Descrição curta para mecanismos de busca."
+---
+
+## Objetivo
+
+Explique em uma frase o que o estudante deverá conseguir fazer ao final.
+
+## Preparação
+
+Liste requisitos, arquivos ou programas necessários.
+
+## Passo 1
+
+Texto do tutorial.
+
+```r
+# Código de exemplo
+```
+
+## Verificação
+
+Inclua um teste simples para o estudante confirmar que concluiu o tutorial.
+
+## Recursos
+
+- [Material de apoio](https://example.org/)

@@ -1,0 +1,16 @@
+---
+title: "Tutoriais"
+description: "Guias práticos da disciplina."
+---
+
+::: {.tutorial-list}
+::: {.tutorial-item}
+### Instalação de R, RStudio e swirl
+
+Preparação para a aula de **Conceitos básicos de programação em R**, em 26 de agosto.
+
+[Começar tutorial →](instalacao_r_rstudio_swirl.qmd)
+:::
+:::
+
+Novos tutoriais podem ser adicionados nesta pasta usando `tutoriais/modelo_tutorial.qmd` como base.

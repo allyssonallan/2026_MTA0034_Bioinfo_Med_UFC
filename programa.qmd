@@ -1,0 +1,77 @@
+---
+title: "Programa da disciplina"
+description: "Conteúdo completo, bibliografia e recursos externos da MTA0034."
+---
+
+## 1. Conceitos básicos de genética
+
+Organização do genoma humano, expressão gênica, mutação, recombinação, deriva genética, seleção, ancestralidade e consanguinidade.
+
+- [An Owner’s Guide to the Human Genome, Pritchard, 2023](https://web.stanford.edu/group/pritchardlab/HGbook.html)
+- Strachan T, Read AP. *Human Molecular Genetics*. 5th ed. CRC Press, Taylor & Francis, 2019.
+
+## 2. Conceitos básicos de programação em R
+
+- [swirl](http://swirlstats.com/)
+- [R for Data Science, 2e](https://r4ds.hadley.nz/)
+- [Posit Cheatsheets](https://posit.co/resources/cheatsheets/)
+- [Tutorial da disciplina: instalação de R, RStudio e swirl](tutoriais/instalacao_r_rstudio_swirl.qmd)
+
+## 3. Bioinformática em R
+
+- [Bioconductor](https://www.bioconductor.org/)
+- [Modern Statistics for Modern Biology, visualização](https://www.huber.embl.de/msmb/03-chap.html)
+- [ggplot2](https://ggplot2.tidyverse.org/)
+- [From Data to Viz](https://www.data-to-viz.com/)
+- [Seeing Theory](https://seeing-theory.brown.edu/index.html)
+
+## 4. Genômica e transcriptômica
+
+NGS e análise de expressão gênica diferencial.
+
+- [Nextflow](https://www.nextflow.io/)
+- [nf-core](https://nf-co.re/)
+- [DIY.transcriptomics](https://diytranscriptomics.com/)
+
+## 5. Bancos de dados de ômicas e clínicos
+
+- [NCBI](https://www.ncbi.nlm.nih.gov/)
+- [GEO](https://www.ncbi.nlm.nih.gov/geo/)
+- [SRA](https://www.ncbi.nlm.nih.gov/sra)
+- [GTEx Portal](https://gtexportal.org/home/index.html)
+- [1000 Genomes](https://www.internationalgenome.org/)
+- [gnomAD](https://gnomad.broadinstitute.org/)
+
+## 6. Oncologia de precisão
+
+Painéis, variantes somáticas e interação com fatores ambientais.
+
+- [cBioPortal](https://www.cbioportal.org/)
+- [COSMIC](https://cancer.sanger.ac.uk/cosmic/)
+- [GDC Data Portal](https://portal.gdc.cancer.gov/)
+- [CIViC](https://civicdb.org/)
+- [OncoKB](https://www.oncokb.org/)
+
+## 7. Doenças raras
+
+Variantes germinativas, exoma e classificação segundo recomendações ACMG/AMP.
+
+- [ClinGen](https://www.clinicalgenome.org/)
+- [ClinVar](https://www.ncbi.nlm.nih.gov/clinvar/)
+- [OMIM](https://www.omim.org/)
+- [Human Phenotype Ontology](https://hpo.jax.org/)
+- [Franklin](https://franklin.genoox.com/clinical-db/home)
+
+## 8. Medicina de precisão, farmacogenômica e implementação clínica
+
+Genoma completo, multiômica, escores de risco poligênico, biópsia líquida, célula única e Perturb-seq.
+
+- [UK Biobank](https://www.ukbiobank.ac.uk/)
+- [NIH All of Us Research Program](https://allofus.nih.gov/)
+- [Open Targets Platform](https://platform.opentargets.org/)
+- [ClinPGx](https://www.clinpgx.org/)
+- [PharmVar](https://www.pharmvar.org/)
+- [Genome Wide Perturb-seq](https://gwps.wi.mit.edu/)
+- [PerturBase](http://www.perturbase.cn/)
+- [Human Cell Atlas](https://www.humancellatlas.org/)
+- [CZ CELLxGENE](https://cellxgene.cziscience.com/)

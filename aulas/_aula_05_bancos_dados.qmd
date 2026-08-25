@@ -1,0 +1,27 @@
+::: {.lesson-card}
+::: {.lesson-number}
+05
+:::
+::: {.lesson-body}
+### Bancos de dados de ômicas e clínicos
+
+**9 de setembro de 2026**
+
+NCBI, GEO, SRA, GTEx, 1000 Genomes e gnomAD.
+
+::: {.resource-grid}
+::: {.resource-box}
+**Slides**  
+[Slides da aula](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Exercícios**  
+[Exercícios](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Apoio**  
+[Material complementar](COLE_AQUI_A_URL)
+:::
+:::
+:::
+:::

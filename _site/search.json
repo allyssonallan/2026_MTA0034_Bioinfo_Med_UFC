@@ -1,0 +1,275 @@
+[
+  {
+    "objectID": "avaliacao.html",
+    "href": "avaliacao.html",
+    "title": "Avaliação",
+    "section": "",
+    "text": "O trabalho final será baseado em dados ômicos e deverá apresentar uma pergunta ou hipótese explícita, uma análise estatística apropriada, visualizações produzidas em R e uma interpretação compatível com os dados utilizados."
+  },
+  {
+    "objectID": "avaliacao.html#trabalho-final",
+    "href": "avaliacao.html#trabalho-final",
+    "title": "Avaliação",
+    "section": "",
+    "text": "O trabalho final será baseado em dados ômicos e deverá apresentar uma pergunta ou hipótese explícita, uma análise estatística apropriada, visualizações produzidas em R e uma interpretação compatível com os dados utilizados."
+  },
+  {
+    "objectID": "avaliacao.html#critérios",
+    "href": "avaliacao.html#critérios",
+    "title": "Avaliação",
+    "section": "Critérios",
+    "text": "Critérios\nA avaliação considerará clareza da pergunta, adequação da análise, reprodutibilidade do código, organização dos dados, qualidade das figuras, interpretação e documentação do fluxo de trabalho. A estrutura de arquivos e metadados deverá favorecer os princípios FAIR, isto é, dados e resultados encontráveis, acessíveis, interoperáveis e reutilizáveis."
+  },
+  {
+    "objectID": "avaliacao.html#recursos",
+    "href": "avaliacao.html#recursos",
+    "title": "Avaliação",
+    "section": "Recursos",
+    "text": "Recursos\n\nThe FAIR Guiding Principles for scientific data management and stewardship\nAnalyzing experimental data with a linear model\nScientific Data, 2025, referência indicada na disciplina"
+  },
+  {
+    "objectID": "avaliacao.html#entrega-sugerida",
+    "href": "avaliacao.html#entrega-sugerida",
+    "title": "Avaliação",
+    "section": "Entrega sugerida",
+    "text": "Entrega sugerida\nO repositório final pode conter README.md, pasta data ou instruções para obtenção dos dados, scripts ou documento Quarto, figuras exportadas e um arquivo de ambiente como renv.lock quando houver dependências específicas."
+  },
+  {
+    "objectID": "aulas/modelo_aula.html",
+    "href": "aulas/modelo_aula.html",
+    "title": "MTA0034 · Bioinformática aplicada à medicina",
+    "section": "",
+    "text": "XX\n\n\nTítulo da aula\nDD de mês de 2026\nResumo do conteúdo.\n\n\nSlides\nSlides da aula\n\n\nExercícios\nExercícios\n\n\nApoio\nMaterial complementar"
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "",
+    "text": "O objetivo é chegar à aula com três componentes funcionando: o R, que executa a linguagem; o RStudio Desktop, que será nosso ambiente de trabalho; e o pacote swirl, que permite praticar R diretamente no console.\n\nO nome do pacote é swirl. Ele é frequentemente referido informalmente como SwirlR, mas o comando correto de instalação é install.packages(\"swirl\")."
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html#antes-da-aula",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html#antes-da-aula",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "",
+    "text": "O objetivo é chegar à aula com três componentes funcionando: o R, que executa a linguagem; o RStudio Desktop, que será nosso ambiente de trabalho; e o pacote swirl, que permite praticar R diretamente no console.\n\nO nome do pacote é swirl. Ele é frequentemente referido informalmente como SwirlR, mas o comando correto de instalação é install.packages(\"swirl\")."
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html#instale-o-r",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html#instale-o-r",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "1. Instale o R",
+    "text": "1. Instale o R\nAcesse o R Project e escolha um mirror do CRAN. Instale a versão estável adequada ao seu sistema operacional.\nDepois da instalação, abra R ou RStudio e execute:\nR.version.string\nVocê deverá receber uma mensagem informando a versão instalada."
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html#instale-o-rstudio-desktop",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html#instale-o-rstudio-desktop",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "2. Instale o RStudio Desktop",
+    "text": "2. Instale o RStudio Desktop\nBaixe a edição gratuita do RStudio Desktop. O R deve estar instalado antes do RStudio.\nAo abrir o RStudio, localize o Console. Digite:\n1 + 1\nO resultado esperado é 2."
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html#instale-o-swirl",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html#instale-o-swirl",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "3. Instale o swirl",
+    "text": "3. Instale o swirl\nNo Console do RStudio, execute:\ninstall.packages(\"swirl\")\nDepois carregue o pacote e inicie o ambiente interativo:\nlibrary(swirl)\nswirl()\nNa primeira execução, o swirl poderá oferecer cursos para instalação."
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html#instale-o-curso-r-programming",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html#instale-o-curso-r-programming",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "4. Instale o curso R Programming",
+    "text": "4. Instale o curso R Programming\nUma opção adequada para acompanhar o início da disciplina é:\nswirl::install_course(\"R Programming\")\nEm seguida:\nlibrary(swirl)\nswirl()\nEscolha R Programming no menu."
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html#faça-um-teste-rápido",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html#faça-um-teste-rápido",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "5. Faça um teste rápido",
+    "text": "5. Faça um teste rápido\nAntes da aula, confirme que os quatro comandos abaixo executam sem erro:\nR.version.string\ngetwd()\ninstalled.packages()[\"swirl\", \"Version\"]\nlibrary(swirl)"
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html#problemas-frequentes",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html#problemas-frequentes",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "Problemas frequentes",
+    "text": "Problemas frequentes\n\nthere is no package called 'swirl'\nA instalação do pacote não foi concluída. Execute novamente:\ninstall.packages(\"swirl\")\n\n\nO RStudio abre, mas não encontra o R\nReinstale primeiro o R e depois abra novamente o RStudio. Em instalações com múltiplas versões de R, verifique a versão selecionada nas configurações do RStudio.\n\n\nO computador é institucional e não permite instalar programas\nUse um computador pessoal para a primeira aula, se possível, ou verifique previamente com o suporte de TI se R e RStudio podem ser instalados. Como alternativa temporária, ambientes em nuvem podem ser usados para praticar, mas o curso será organizado pensando em R e RStudio locais."
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html#checklist-antes-de-26-de-agosto",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html#checklist-antes-de-26-de-agosto",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "Checklist antes de 26 de agosto",
+    "text": "Checklist antes de 26 de agosto\n\nR instalado\nRStudio Desktop instalado\n1 + 1 retorna 2 no Console\npacote swirl instalado\nlibrary(swirl) executa sem erro\ncurso R Programming instalado ou disponível para instalação"
+  },
+  {
+    "objectID": "tutoriais/instalacao_r_rstudio_swirl.html#recursos",
+    "href": "tutoriais/instalacao_r_rstudio_swirl.html#recursos",
+    "title": "Instalação de R, RStudio e swirl",
+    "section": "Recursos",
+    "text": "Recursos\n\nR Project\nRStudio Desktop\nswirl para estudantes\nR for Data Science, 2e"
+  },
+  {
+    "objectID": "programa.html",
+    "href": "programa.html",
+    "title": "Programa da disciplina",
+    "section": "",
+    "text": "Organização do genoma humano, expressão gênica, mutação, recombinação, deriva genética, seleção, ancestralidade e consanguinidade.\n\nAn Owner’s Guide to the Human Genome, Pritchard, 2023\nStrachan T, Read AP. Human Molecular Genetics. 5th ed. CRC Press, Taylor & Francis, 2019."
+  },
+  {
+    "objectID": "programa.html#conceitos-básicos-de-genética",
+    "href": "programa.html#conceitos-básicos-de-genética",
+    "title": "Programa da disciplina",
+    "section": "",
+    "text": "Organização do genoma humano, expressão gênica, mutação, recombinação, deriva genética, seleção, ancestralidade e consanguinidade.\n\nAn Owner’s Guide to the Human Genome, Pritchard, 2023\nStrachan T, Read AP. Human Molecular Genetics. 5th ed. CRC Press, Taylor & Francis, 2019."
+  },
+  {
+    "objectID": "programa.html#conceitos-básicos-de-programação-em-r",
+    "href": "programa.html#conceitos-básicos-de-programação-em-r",
+    "title": "Programa da disciplina",
+    "section": "2. Conceitos básicos de programação em R",
+    "text": "2. Conceitos básicos de programação em R\n\nswirl\nR for Data Science, 2e\nPosit Cheatsheets\nTutorial da disciplina: instalação de R, RStudio e swirl"
+  },
+  {
+    "objectID": "programa.html#bioinformática-em-r",
+    "href": "programa.html#bioinformática-em-r",
+    "title": "Programa da disciplina",
+    "section": "3. Bioinformática em R",
+    "text": "3. Bioinformática em R\n\nBioconductor\nModern Statistics for Modern Biology, visualização\nggplot2\nFrom Data to Viz\nSeeing Theory"
+  },
+  {
+    "objectID": "programa.html#genômica-e-transcriptômica",
+    "href": "programa.html#genômica-e-transcriptômica",
+    "title": "Programa da disciplina",
+    "section": "4. Genômica e transcriptômica",
+    "text": "4. Genômica e transcriptômica\nNGS e análise de expressão gênica diferencial.\n\nNextflow\nnf-core\nDIY.transcriptomics"
+  },
+  {
+    "objectID": "programa.html#bancos-de-dados-de-ômicas-e-clínicos",
+    "href": "programa.html#bancos-de-dados-de-ômicas-e-clínicos",
+    "title": "Programa da disciplina",
+    "section": "5. Bancos de dados de ômicas e clínicos",
+    "text": "5. Bancos de dados de ômicas e clínicos\n\nNCBI\nGEO\nSRA\nGTEx Portal\n1000 Genomes\ngnomAD"
+  },
+  {
+    "objectID": "programa.html#oncologia-de-precisão",
+    "href": "programa.html#oncologia-de-precisão",
+    "title": "Programa da disciplina",
+    "section": "6. Oncologia de precisão",
+    "text": "6. Oncologia de precisão\nPainéis, variantes somáticas e interação com fatores ambientais.\n\ncBioPortal\nCOSMIC\nGDC Data Portal\nCIViC\nOncoKB"
+  },
+  {
+    "objectID": "programa.html#doenças-raras",
+    "href": "programa.html#doenças-raras",
+    "title": "Programa da disciplina",
+    "section": "7. Doenças raras",
+    "text": "7. Doenças raras\nVariantes germinativas, exoma e classificação segundo recomendações ACMG/AMP.\n\nClinGen\nClinVar\nOMIM\nHuman Phenotype Ontology\nFranklin"
+  },
+  {
+    "objectID": "programa.html#medicina-de-precisão-farmacogenômica-e-implementação-clínica",
+    "href": "programa.html#medicina-de-precisão-farmacogenômica-e-implementação-clínica",
+    "title": "Programa da disciplina",
+    "section": "8. Medicina de precisão, farmacogenômica e implementação clínica",
+    "text": "8. Medicina de precisão, farmacogenômica e implementação clínica\nGenoma completo, multiômica, escores de risco poligênico, biópsia líquida, célula única e Perturb-seq.\n\nUK Biobank\nNIH All of Us Research Program\nOpen Targets Platform\nClinPGx\nPharmVar\nGenome Wide Perturb-seq\nPerturBase\nHuman Cell Atlas\nCZ CELLxGENE"
+  },
+  {
+    "objectID": "tutoriais/modelo_tutorial.html",
+    "href": "tutoriais/modelo_tutorial.html",
+    "title": "Título do tutorial",
+    "section": "",
+    "text": "Explique em uma frase o que o estudante deverá conseguir fazer ao final."
+  },
+  {
+    "objectID": "tutoriais/modelo_tutorial.html#objetivo",
+    "href": "tutoriais/modelo_tutorial.html#objetivo",
+    "title": "Título do tutorial",
+    "section": "",
+    "text": "Explique em uma frase o que o estudante deverá conseguir fazer ao final."
+  },
+  {
+    "objectID": "tutoriais/modelo_tutorial.html#preparação",
+    "href": "tutoriais/modelo_tutorial.html#preparação",
+    "title": "Título do tutorial",
+    "section": "Preparação",
+    "text": "Preparação\nListe requisitos, arquivos ou programas necessários."
+  },
+  {
+    "objectID": "tutoriais/modelo_tutorial.html#passo-1",
+    "href": "tutoriais/modelo_tutorial.html#passo-1",
+    "title": "Título do tutorial",
+    "section": "Passo 1",
+    "text": "Passo 1\nTexto do tutorial.\n# Código de exemplo"
+  },
+  {
+    "objectID": "tutoriais/modelo_tutorial.html#verificação",
+    "href": "tutoriais/modelo_tutorial.html#verificação",
+    "title": "Título do tutorial",
+    "section": "Verificação",
+    "text": "Verificação\nInclua um teste simples para o estudante confirmar que concluiu o tutorial."
+  },
+  {
+    "objectID": "tutoriais/modelo_tutorial.html#recursos",
+    "href": "tutoriais/modelo_tutorial.html#recursos",
+    "title": "Título do tutorial",
+    "section": "Recursos",
+    "text": "Recursos\n\nMaterial de apoio"
+  },
+  {
+    "objectID": "tutoriais/index.html",
+    "href": "tutoriais/index.html",
+    "title": "Tutoriais",
+    "section": "",
+    "text": "Instalação de R, RStudio e swirl\nPreparação para a aula de Conceitos básicos de programação em R, em 26 de agosto.\nComeçar tutorial →\n\n\nNovos tutoriais podem ser adicionados nesta pasta usando tutoriais/modelo_tutorial.qmd como base."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Bioinformática aplicada à medicina",
+    "section": "",
+    "text": "Programa de Pós-Graduação em Medicina Translacional · Universidade Federal do Ceará\n\n\n\nUma disciplina prática para conectar genética, programação em R, dados ômicos e implementação clínica.\n\n24 de agosto a 21 de setembro de 2026 Segundas e quartas 8h às 12h\n\nVer cronograma Abrir tutoriais"
+  },
+  {
+    "objectID": "index.html#objetivo",
+    "href": "index.html#objetivo",
+    "title": "Bioinformática aplicada à medicina",
+    "section": "Objetivo",
+    "text": "Objetivo\nCapacitar os estudantes a compreender e aplicar conceitos, métodos e ferramentas de bioinformática na análise de dados genômicos, transcriptômicos e clínicos, utilizando a linguagem R, bancos de dados biomédicos e fluxos computacionais reprodutíveis para investigar doenças raras, câncer e outras aplicações da medicina de precisão, com interpretação crítica dos resultados e organização dos dados segundo os princípios FAIR."
+  },
+  {
+    "objectID": "index.html#professores",
+    "href": "index.html#professores",
+    "title": "Bioinformática aplicada à medicina",
+    "section": "Professores",
+    "text": "Professores\n\n\n\n\nAllysson Allan de Farias\nAdicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.\n\n⌁ CV Lattes ◎ Instagram do laboratório\n\n\n\n\n\n\nFelipe Pantoja Mesquita\nAdicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.\n\n⌁ CV Lattes ◎ Instagram do laboratório\n\n\n\n\n\n\nThalita Basso Scandolara\nAdicione aqui uma minibiografia, linhas de pesquisa ou área de atuação.\n\n⌁ CV Lattes ◎ Instagram do laboratório"
+  },
+  {
+    "objectID": "index.html#instituições-e-laboratórios",
+    "href": "index.html#instituições-e-laboratórios",
+    "title": "Bioinformática aplicada à medicina",
+    "section": "Instituições e laboratórios",
+    "text": "Instituições e laboratórios\nSubstitua os cinco arquivos SVG abaixo pelos logos oficiais mantendo os mesmos nomes, ou altere os caminhos nesta seção."
+  },
+  {
+    "objectID": "index.html#cronograma",
+    "href": "index.html#cronograma",
+    "title": "Bioinformática aplicada à medicina",
+    "section": "Cronograma",
+    "text": "Cronograma\n\n\n\n24 AGO\nAula 01\n\n\nConceitos básicos de genética\nOrganização do genoma humano, expressão gênica, mutação, recombinação, deriva genética, seleção, ancestralidade e consanguinidade.\nConteúdo liberado\n\n\n\n\n26 AGO\nAula 02\n\n\nConceitos básicos de programação em R\nPreparação para a próxima aula: instalar R, RStudio e o pacote swirl.\nPreparar computador → Pré aula disponível\n\n\n\n\n31 AGO\nAula 03\n\n\nBioinformática em R\nEm breve\n\n\n\n\n02 SET\nAula 04\n\n\nGenômica e transcriptômica\nEm breve\n\n\n\n\n09 SET\nAula 05\n\n\nBancos de dados de ômicas e clínicos\nEm breve\n\n\n\n\n14 SET\nAula 06\n\n\nOncologia de precisão\nEm breve\n\n\n\n\n16 SET\nAula 07\n\n\nDoenças raras\nEm breve\n\n\n\n\n21 SET\nAula 08\n\n\nMedicina de precisão e implementação clínica\nEm breve"
+  },
+  {
+    "objectID": "index.html#conteúdo-liberado",
+    "href": "index.html#conteúdo-liberado",
+    "title": "Bioinformática aplicada à medicina",
+    "section": "Conteúdo liberado",
+    "text": "Conteúdo liberado\n\n\n01\n\n\nConceitos básicos de genética\n24 de agosto de 2026\nOrganização do genoma humano, expressão gênica, mutação, recombinação, deriva genética, seleção, ancestralidade e consanguinidade.\n\n\nSlides\nAdicionar URL dos slides\n\n\nExercícios\nAdicionar URL dos exercícios\n\n\nApoio\nPritchard, 2023\n\n\n\n\n\n\n02\n\n\nConceitos básicos de programação em R\n26 de agosto de 2026\nA página completa da aula ainda não está liberada. O tutorial de preparação já está disponível para instalação e teste do ambiente.\n\n\nPreparação\nInstalar R, RStudio e swirl\n\n\nSlides\nLiberar após a aula\n\n\nExercícios\nLiberar após a aula"
+  },
+  {
+    "objectID": "index.html#avaliação",
+    "href": "index.html#avaliação",
+    "title": "Bioinformática aplicada à medicina",
+    "section": "Avaliação",
+    "text": "Avaliação\nO trabalho final utilizará dados ômicos em uma análise estatística com teste de hipóteses e geração de gráficos no R. A organização, documentação e reutilização do trabalho serão avaliadas à luz dos princípios FAIR.\nVer critérios e referências →"
+  }
+]

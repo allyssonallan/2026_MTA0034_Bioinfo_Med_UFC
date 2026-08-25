@@ -1,0 +1,27 @@
+::: {.lesson-card}
+::: {.lesson-number}
+08
+:::
+::: {.lesson-body}
+### Medicina de precisão e implementação clínica
+
+**21 de setembro de 2026**
+
+Genoma completo, multiômica, farmacogenômica, PRS, biópsia líquida, célula única e Perturb-seq.
+
+::: {.resource-grid}
+::: {.resource-box}
+**Slides**  
+[Slides da aula](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Exercícios**  
+[Exercícios](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Apoio**  
+[Material complementar](COLE_AQUI_A_URL)
+:::
+:::
+:::
+:::

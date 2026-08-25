@@ -1,0 +1,27 @@
+::: {.lesson-card}
+::: {.lesson-number}
+03
+:::
+::: {.lesson-body}
+### Bioinformática em R
+
+**31 de agosto de 2026**
+
+Bioconductor, manipulação de dados biomédicos e visualização.
+
+::: {.resource-grid}
+::: {.resource-box}
+**Slides**  
+[Slides da aula](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Exercícios**  
+[Exercícios](COLE_AQUI_A_URL)
+:::
+::: {.resource-box}
+**Apoio**  
+[Material complementar](COLE_AQUI_A_URL)
+:::
+:::
+:::
+:::
