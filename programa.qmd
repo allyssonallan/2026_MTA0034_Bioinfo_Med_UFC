@@ -5,7 +5,7 @@ description: "Conteúdo completo, bibliografia e recursos externos da MTA0034."
 
 ## 1. Conceitos básicos de genética
 
-Organização do genoma humano, expressão gênica, mutação, recombinação, deriva genética, seleção, ancestralidade e consanguinidade.
+Organização do genoma humano e exploração do UCSC genome browser.
 
 - [An Owner’s Guide to the Human Genome, Pritchard, 2023](https://web.stanford.edu/group/pritchardlab/HGbook.html)
 - Strachan T, Read AP. *Human Molecular Genetics*. 5th ed. CRC Press, Taylor & Francis, 2019.
