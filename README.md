@@ -56,9 +56,12 @@ Copie `tutoriais/modelo_tutorial.qmd`, renomeie o arquivo e adicione o novo tuto
 
 ## Publicar no GitHub Pages
 
-1. No GitHub, abra **Settings → Pages** e selecione **Source: GitHub Actions**.
-2. Faça commit das alterações e envie a branch `main` com `git push origin main`.
-3. Acompanhe o workflow **Publicar site Quarto** na aba **Actions**.
+1. Antes da primeira execução do workflow, abra **Settings → Pages** no GitHub.
+2. Em **Build and deployment → Source**, selecione **GitHub Actions** e salve.
+3. Se o workflow já falhou com `Get Pages site failed`, abra **Actions → Publicar site Quarto**, selecione a execução com erro e use **Re-run all jobs**.
+4. Nas próximas atualizações, faça commit das alterações e envie a branch `main` com `git push origin main`.
+
+Acompanhe o workflow **Publicar site Quarto** na aba **Actions**.
 
 O arquivo `.github/workflows/publish.yml` renderiza o projeto e publica `_site/` automaticamente em cada push para `main`. Ele também pode ser iniciado manualmente pela aba **Actions**.
 
