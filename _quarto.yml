@@ -5,8 +5,8 @@ project:
 website:
   title: "MTA0034 · Bioinformática aplicada à medicina"
   description: "Disciplina do Programa de Pós-Graduação em Medicina Translacional da Universidade Federal do Ceará"
-  site-url: "https://SEU_USUARIO.github.io/2026_MTA0034_Bioinfo_Med_UFC/"
-  repo-url: "https://github.com/SEU_USUARIO/2026_MTA0034_Bioinfo_Med_UFC"
+  site-url: "https://allyssonallan.github.io/2026_MTA0034_Bioinfo_Med_UFC/"
+  repo-url: "https://github.com/allyssonallan/2026_MTA0034_Bioinfo_Med_UFC"
   repo-actions: [edit, source, issue]
   favicon: assets/logos/ufc_placeholder.svg
   navbar:
@@ -22,7 +22,7 @@ website:
         href: avaliacao.qmd
     right:
       - icon: github
-        href: "https://github.com/SEU_USUARIO/2026_MTA0034_Bioinfo_Med_UFC"
+        href: "https://github.com/allyssonallan/2026_MTA0034_Bioinfo_Med_UFC"
         aria-label: GitHub
   page-footer:
     left: "MTA0034 · PPG Medicina Translacional · UFC"
