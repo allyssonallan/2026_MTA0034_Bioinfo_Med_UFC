@@ -17,13 +17,13 @@
 [Instalar R, RStudio e swirl](tutoriais/instalacao_r_rstudio_swirl.qmd)
 :::
 ::: {.resource-box} 
-**Scripts**  
+**Scripts** 
 [Script 1](scripts/script_01.R){.text-link}
 [Script 2](scripts/script_02.R){.text-link}
 [Script 3](scripts/script_03.R){.text-link}
 [Script 4](scripts/script_04.R){.text-link}
 [Script 5](scripts/script_05.R){.text-link}
-[Dataset](scripts/DataFrame.xlsx)text-link}
+[Dataset](scripts/DataFrame.xlsx){.text-link}
 :::
 :::
 :::
