@@ -7,7 +7,6 @@
 
 **26 de agosto de 2026**
 
-A página completa da aula ainda não está liberada. O tutorial de preparação já está disponível para instalação e teste do ambiente.
 
 ::: {.resource-grid}
 ::: {.resource-box}
