@@ -1,132 +1,197 @@
 ---
-title: "Instalação de R, RStudio e swirl"
-subtitle: "Preparação para a Aula 02 · Conceitos básicos de programação em R"
-description: "Guia para preparar o computador para a aula de programação em R."
+title: "Instalação e uso do swirl"
+subtitle: "Preparação para a Aula 03 · Bioinformática em R"
+description: "Guia para instalar o swirl, adicionar os cursos da disciplina e começar as atividades no RStudio."
 ---
 
-## Antes da aula
+## Objetivo
 
-O objetivo é chegar à aula com três componentes funcionando: o R, que executa a linguagem; o RStudio Desktop, que será nosso ambiente de trabalho; e o pacote `swirl`, que permite praticar R diretamente no console.
+O `swirl` ensina programação em R e análise de dados de forma interativa, diretamente no Console do RStudio. Ao final deste tutorial, você terá o pacote e os cinco cursos da disciplina instalados e saberá iniciar, interromper e retomar uma lição.
 
-> O nome do pacote é **swirl**. Ele é frequentemente referido informalmente como SwirlR, mas o comando correto de instalação é `install.packages("swirl")`.
+::: {.callout-note}
+Você precisará de conexão com a internet para instalar o pacote e os cursos. As atividades dos cursos são apresentadas em inglês.
+:::
 
-## 1. Instale o R
+## 1. Confirme os pré-requisitos
 
-Acesse o [R Project](https://www.r-project.org/) e escolha um mirror do CRAN. Instale a versão estável adequada ao seu sistema operacional.
+Tenha o [R](https://www.r-project.org/) e o [RStudio Desktop](https://posit.co/download/rstudio-desktop/) instalados. O R deve ser instalado antes do RStudio.
 
-Depois da instalação, abra R ou RStudio e execute:
-
-```r
-R.version.string
-```
-
-Você deverá receber uma mensagem informando a versão instalada.
-
-## 2. Instale o RStudio Desktop
-
-Baixe a edição gratuita do [RStudio Desktop](https://posit.co/download/rstudio-desktop/). O R deve estar instalado antes do RStudio.
-
-Ao abrir o RStudio, localize o **Console**. Digite:
+Abra o RStudio, localize o painel **Console** e execute:
 
 ```r
 1 + 1
 ```
 
-O resultado esperado é `2`.
+O resultado esperado é `2`. Todos os comandos deste tutorial devem ser executados no **Console**, um de cada vez, pressionando **Enter** ao final de cada linha.
 
-## 3. Instale o swirl
+::: {.callout-tip}
+Nos exemplos encontrados na internet, o símbolo `>` costuma representar o prompt do Console. Não digite nem copie esse símbolo; digite somente o comando que aparece depois dele.
+:::
 
-No Console do RStudio, execute:
+## 2. Instale o pacote swirl
+
+Esta etapa precisa ser feita somente uma vez em cada computador:
 
 ```r
 install.packages("swirl")
 ```
 
-Depois carregue o pacote e inicie o ambiente interativo:
+Aguarde a instalação terminar e o prompt `>` reaparecer. Em seguida, carregue o pacote:
 
 ```r
 library(swirl)
-swirl()
 ```
 
-Na primeira execução, o `swirl` poderá oferecer cursos para instalação.
+Se nenhuma mensagem de erro aparecer, o pacote foi carregado corretamente. O comando `library(swirl)` deverá ser repetido sempre que você abrir uma nova sessão do RStudio e quiser usar o `swirl`.
 
-## 4. Instale o exercício da disciplina para a Aula 03
+## 3. Instale os cinco cursos
 
-Baixe o arquivo [MTA0034_Bioinformatica_R_swirl.zip](../recursos/MTA0034_Bioinformatica_R_swirl.zip){download=""}. Mantenha o arquivo compactado e, no Console do RStudio, execute:
-
-```r
-arquivo_curso <- file.choose()
-swirl::install_course_zip(arquivo_curso)
-```
-
-Na janela que abrir, selecione o arquivo `.zip` baixado. Depois, inicie o `swirl`:
-
-```r
-library(swirl)
-swirl()
-```
-
-Escolha o curso **MTA0034 Bioinformatica em R** e a lição **Preparacao para Bioinformatica em R**. O exercício usa somente funções do R básico e leva aproximadamente 15 minutos.
-
-## 5. Curso complementar R Programming
-
-Para continuar praticando depois do exercício da disciplina, instale também o curso introdutório oficial:
+Com o pacote carregado, execute os comandos abaixo, **um de cada vez e nesta ordem**:
 
 ```r
 swirl::install_course("R Programming")
+swirl::install_course("Getting and Cleaning Data")
+swirl::install_course("Exploratory Data Analysis")
+swirl::install_course("Regression Models")
+swirl::install_course("Statistical Inference")
 ```
 
-Em seguida:
+Cada download poderá levar alguns minutos. Antes de executar o comando seguinte, aguarde a barra chegar a `100%` e aparecer a mensagem:
+
+```text
+| Course installed successfully!
+```
+
+Os nomes dos cursos diferenciam letras maiúsculas de minúsculas. Por isso, mantenha a grafia exatamente como aparece no bloco acima.
+
+## 4. Comece pelo curso R Programming
+
+Depois de instalar todos os cursos, inicie o ambiente interativo:
+
+```r
+swirl()
+```
+
+Na primeira execução:
+
+1. Informe um nome de usuário. Use sempre o mesmo nome nas próximas sessões para que seu progresso seja recuperado.
+2. No menu de cursos, digite o número correspondente a **R Programming** e pressione **Enter**.
+3. Escolha a primeira lição ainda não concluída.
+4. Siga as instruções exibidas no Console.
+
+Os números mostrados no menu podem variar de um computador para outro. Escolha pelo **nome do curso**, não por um número fixo deste tutorial.
+
+### Como interpretar as mensagens
+
+Durante uma lição, o `swirl` indicará quando é sua vez de agir:
+
+- `...` — pressione **Enter** para continuar a leitura;
+- `Selection:` — digite o número de uma opção e pressione **Enter**;
+- `ANSWER:` ou o prompt `>` — digite a resposta ou o comando solicitado;
+- barra com porcentagem — mostra seu avanço na lição atual.
+
+Digite os comandos propostos diretamente no Console. Se a resposta não estiver correta, leia a dica, ajuste o comando e tente novamente.
+
+## 5. Siga a ordem de estudo
+
+Complete os cursos na sequência abaixo:
+
+| Ordem | Curso | Foco principal |
+|---:|---|---|
+| 1 | **R Programming** | fundamentos da linguagem R |
+| 2 | **Getting and Cleaning Data** | obtenção, organização e limpeza de dados |
+| 3 | **Exploratory Data Analysis** | exploração e visualização de dados |
+| 4 | **Regression Models** | fundamentos de modelos de regressão |
+| 5 | **Statistical Inference** | probabilidade, testes de hipóteses e intervalos de confiança |
+
+Comece por **R Programming**. Ao concluir suas lições, volte ao menu principal e avance para **Getting and Cleaning Data**; depois siga a tabela até **Statistical Inference**.
+
+## 6. Pause, retome e navegue
+
+Quando o prompt `>` estiver visível durante uma lição, estes comandos especiais estão disponíveis:
+
+| Comando | Ação |
+|---|---|
+| `info()` | exibe novamente a lista de comandos especiais |
+| `play()` | libera o Console para você experimentar comandos sem que o `swirl` os avalie |
+| `nxt()` | encerra o modo livre e retoma a lição |
+| `skip()` | pula a questão atual e mostra a resposta esperada |
+| `main()` | retorna ao menu principal |
+| `bye()` | encerra o `swirl` e salva o progresso |
+
+Para interromper o estudo com segurança, use:
+
+```r
+bye()
+```
+
+Para continuar em outro momento, abra o RStudio e execute:
 
 ```r
 library(swirl)
 swirl()
 ```
 
-Escolha **R Programming** no menu.
+Informe o mesmo nome de usuário. O `swirl` oferecerá a opção de retomar uma lição interrompida.
 
-## 6. Faça um teste rápido
+## 7. Faça o teste antes da aula
 
-Antes da aula, confirme que os quatro comandos abaixo executam sem erro:
+Feche e abra novamente o RStudio. No Console, execute:
 
 ```r
-R.version.string
-getwd()
-installed.packages()["swirl", "Version"]
 library(swirl)
+swirl()
 ```
+
+Confirme que os cinco cursos aparecem no menu e entre em **R Programming**. Faça pelo menos o início da primeira lição e saia com `bye()`.
 
 ## Problemas frequentes
 
 ### `there is no package called 'swirl'`
 
-A instalação do pacote não foi concluída. Execute novamente:
+O pacote não foi instalado nessa versão do R. Execute novamente:
 
 ```r
 install.packages("swirl")
+library(swirl)
 ```
+
+### O curso não instala ou o download é interrompido
+
+Verifique a conexão com a internet e repita apenas o comando do curso que falhou. Aguarde a mensagem `Course installed successfully!` antes de continuar.
+
+Se o R solicitar a instalação de pacotes adicionais, responda conforme indicado no Console e aguarde a conclusão. Não feche o RStudio enquanto a instalação estiver em andamento.
+
+### O curso não aparece no menu
+
+Saia do `swirl`, instale novamente o curso usando a grafia exata e reinicie:
+
+```r
+swirl::install_course("R Programming")
+swirl()
+```
+
+Substitua `R Programming` pelo nome exato do curso ausente.
 
 ### O RStudio abre, mas não encontra o R
 
-Reinstale primeiro o R e depois abra novamente o RStudio. Em instalações com múltiplas versões de R, verifique a versão selecionada nas configurações do RStudio.
-
-### O computador é institucional e não permite instalar programas
-
-Use um computador pessoal para a primeira aula, se possível, ou verifique previamente com o suporte de TI se R e RStudio podem ser instalados. Como alternativa temporária, ambientes em nuvem podem ser usados para praticar, mas o curso será organizado pensando em R e RStudio locais.
+Instale primeiro o R e depois abra novamente o RStudio. Em computadores institucionais, pode ser necessário solicitar ao suporte de TI permissão para instalar programas e pacotes.
 
 ## Checklist de preparação
 
-- [ ] R instalado
-- [ ] RStudio Desktop instalado
-- [ ] `1 + 1` retorna `2` no Console
+- [ ] R e RStudio Desktop instalados
 - [ ] pacote `swirl` instalado
 - [ ] `library(swirl)` executa sem erro
-- [ ] exercício **MTA0034 Bioinformatica em R** instalado
+- [ ] curso **R Programming** instalado
+- [ ] curso **Getting and Cleaning Data** instalado
+- [ ] curso **Exploratory Data Analysis** instalado
+- [ ] curso **Regression Models** instalado
+- [ ] curso **Statistical Inference** instalado
+- [ ] primeira lição de **R Programming** iniciada
+- [ ] saída realizada com `bye()`
 
-## Recursos
+## Recursos oficiais
 
-- [R Project](https://www.r-project.org/)
-- [RStudio Desktop](https://posit.co/download/rstudio-desktop/)
-- [swirl para estudantes](https://swirlstats.com/students.html)
-- [R for Data Science, 2e](https://r4ds.hadley.nz/)
+- [Guia do swirl para estudantes](https://swirlstats.com/students.html)
+- [Catálogo oficial de cursos](https://swirlstats.com/scn/)
+- [Repositório oficial de cursos do swirl](https://github.com/swirldev/swirl_courses)

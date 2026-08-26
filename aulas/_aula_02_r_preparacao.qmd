@@ -15,10 +15,9 @@
 [Introdução à linguagem R](recursos/Aula2_bioinfo_medicina_intro_R.pdf){.text-link download=""}
 :::
 ::: {.resource-box}
-**Preparação**  
-[Instalar R, RStudio e swirl](tutoriais/instalacao_r_rstudio_swirl.qmd){.text-link}
+**Preparação para a Aula 03**
 
-[Baixar exercício para a Aula 03](recursos/MTA0034_Bioinformatica_R_swirl.zip){.text-link download=""}
+[Instalar os cursos e usar o swirl](tutoriais/instalacao_r_rstudio_swirl.qmd){.text-link}
 :::
 ::: {.resource-box} 
 **Scripts e dados**

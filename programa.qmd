@@ -15,7 +15,7 @@ Organização do genoma humano e exploração do UCSC genome browser.
 - [swirl](http://swirlstats.com/)
 - [R for Data Science, 2e](https://r4ds.hadley.nz/)
 - [Posit Cheatsheets](https://posit.co/resources/cheatsheets/)
-- [Tutorial da disciplina: instalação de R, RStudio e swirl](tutoriais/instalacao_r_rstudio_swirl.qmd)
+- [Tutorial da disciplina: instalação e uso do swirl](tutoriais/instalacao_r_rstudio_swirl.qmd)
 
 ## 3. Bioinformática em R
 

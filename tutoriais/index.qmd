@@ -5,9 +5,9 @@ description: "Guias práticos da disciplina."
 
 ::: {.tutorial-list}
 ::: {.tutorial-item}
-### Instalação de R, RStudio e swirl
+### Instalação e uso do swirl
 
-Preparação para a aula de **Conceitos básicos de programação em R**, em 26 de agosto.
+Preparação para a aula de **Bioinformática em R**, em 31 de agosto: instale os cinco cursos e comece por **R Programming**.
 
 [Começar tutorial →](instalacao_r_rstudio_swirl.qmd)
 :::

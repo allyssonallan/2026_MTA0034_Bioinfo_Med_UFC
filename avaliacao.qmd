@@ -15,7 +15,6 @@ A avaliação considerará clareza da pergunta, adequação da análise, reprodu
 
 - [The FAIR Guiding Principles for scientific data management and stewardship](https://www.nature.com/articles/sdata201618)
 - [Analyzing experimental data with a linear model](https://benchbiostats.com/chapters/intro.html)
-- [Scientific Data, 2025, referência indicada na disciplina](https://www.nature.com/articles/s41597-025-04451-9)
 
 ## Entrega sugerida
 
