@@ -1,4 +1,4 @@
-::: {.lesson-card .lesson-next}
+::: {.lesson-card .lesson-next #aula-02}
 ::: {.lesson-number}
 02
 :::
@@ -10,20 +10,24 @@
 
 ::: {.resource-grid}
 ::: {.resource-box} 
-[Slides](recursos/Aula2_bioinfo_medicina_r_basico.pdf){.text-link}
+**Slides**
+
+[Introdução à linguagem R](recursos/Aula2_bioinfo_medicina_intro_R.pdf){.text-link download=""}
 :::
 ::: {.resource-box}
 **Preparação**  
-[Instalar R, RStudio e swirl](tutoriais/instalacao_r_rstudio_swirl.qmd)
+[Instalar R, RStudio e swirl](tutoriais/instalacao_r_rstudio_swirl.qmd){.text-link}
+
+[Baixar exercício para a Aula 03](recursos/MTA0034_Bioinformatica_R_swirl.zip){.text-link download=""}
 :::
 ::: {.resource-box} 
-**Scripts**
-[Script 1](scripts/Script_01.R){.text-link}
-[Script 2](scripts/Script_02.R){.text-link}
-[Script 3](scripts/Script_03.R){.text-link}
-[Script 4](scripts/Script_04.R){.text-link}
-[Script 5](scripts/Script_05.R){.text-link}
-[Dataset](scripts/DataFrame.xlsx){.text-link}
+**Scripts e dados**
+
+[Script 1](scripts/Script_1.R){.text-link download=""}
+[Script 2](scripts/Script_2.R){.text-link download=""}
+[Script 3](scripts/Script_3.R){.text-link download=""}
+[Script 4](scripts/Script_4.R){.text-link download=""}
+[Dataset](scripts/DataFrame.xlsx){.text-link download=""}
 :::
 :::
 :::

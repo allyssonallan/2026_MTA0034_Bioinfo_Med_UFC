@@ -1,3 +1,4 @@
 /.quarto/
 /_site/
+/aulas/_aula_*.html
 **/*.quarto_ipynb

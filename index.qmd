@@ -131,8 +131,9 @@ Aula 02
 
 Preparação para a próxima aula: instalar R, RStudio e o pacote `swirl`.
 
+[Abrir slides →](recursos/Aula2_bioinfo_medicina_intro_R.pdf){.schedule-link download=""}
 [Preparar computador →](tutoriais/instalacao_r_rstudio_swirl.qmd){.schedule-link}
-<span class="status status-next">Pré aula disponível</span>
+<span class="status status-next">Aula e exercício disponíveis</span>
 :::
 :::
 

@@ -51,9 +51,27 @@ swirl()
 
 Na primeira execução, o `swirl` poderá oferecer cursos para instalação.
 
-## 4. Instale o curso R Programming
+## 4. Instale o exercício da disciplina para a Aula 03
 
-Uma opção adequada para acompanhar o início da disciplina é:
+Baixe o arquivo [MTA0034_Bioinformatica_R_swirl.zip](../recursos/MTA0034_Bioinformatica_R_swirl.zip){download=""}. Mantenha o arquivo compactado e, no Console do RStudio, execute:
+
+```r
+arquivo_curso <- file.choose()
+swirl::install_course_zip(arquivo_curso)
+```
+
+Na janela que abrir, selecione o arquivo `.zip` baixado. Depois, inicie o `swirl`:
+
+```r
+library(swirl)
+swirl()
+```
+
+Escolha o curso **MTA0034 Bioinformatica em R** e a lição **Preparacao para Bioinformatica em R**. O exercício usa somente funções do R básico e leva aproximadamente 15 minutos.
+
+## 5. Curso complementar R Programming
+
+Para continuar praticando depois do exercício da disciplina, instale também o curso introdutório oficial:
 
 ```r
 swirl::install_course("R Programming")
@@ -68,7 +86,7 @@ swirl()
 
 Escolha **R Programming** no menu.
 
-## 5. Faça um teste rápido
+## 6. Faça um teste rápido
 
 Antes da aula, confirme que os quatro comandos abaixo executam sem erro:
 
@@ -97,14 +115,14 @@ Reinstale primeiro o R e depois abra novamente o RStudio. Em instalações com m
 
 Use um computador pessoal para a primeira aula, se possível, ou verifique previamente com o suporte de TI se R e RStudio podem ser instalados. Como alternativa temporária, ambientes em nuvem podem ser usados para praticar, mas o curso será organizado pensando em R e RStudio locais.
 
-## Checklist antes de 26 de agosto
+## Checklist de preparação
 
 - [ ] R instalado
 - [ ] RStudio Desktop instalado
 - [ ] `1 + 1` retorna `2` no Console
 - [ ] pacote `swirl` instalado
 - [ ] `library(swirl)` executa sem erro
-- [ ] curso **R Programming** instalado ou disponível para instalação
+- [ ] exercício **MTA0034 Bioinformatica em R** instalado
 
 ## Recursos
 

@@ -1,0 +1,123 @@
+- Class: meta
+  Course: MTA0034 Bioinformatica em R
+  Lesson: Preparacao para Bioinformatica em R
+  Author: Allysson Allan de Farias
+  Type: Standard
+  Organization: PPG Medicina Translacional - UFC
+  Version: 1.0.1
+
+- Class: text
+  Output: Bem-vindo ao exercício de preparação para a Aula 03. Vamos revisar conceitos básicos de R usando um pequeno conjunto de dados de expressão gênica.
+
+- Class: text
+  Output: Os valores usados aqui são didáticos e não devem ser interpretados como resultados clínicos.
+
+- Class: cmd_question
+  Output: Crie um vetor chamado genes com os nomes TP53, BRCA1, EGFR e KRAS, nessa ordem.
+  CorrectAnswer: genes <- c("TP53", "BRCA1", "EGFR", "KRAS")
+  AnswerTests: omnitest(correctExpr='genes <- c("TP53", "BRCA1", "EGFR", "KRAS")')
+  Hint: Use genes <- c("TP53", "BRCA1", "EGFR", "KRAS").
+
+- Class: cmd_question
+  Output: Crie um vetor numérico chamado expressao com os valores 8.2, 5.1, 10.4 e 3.7, nessa ordem.
+  CorrectAnswer: expressao <- c(8.2, 5.1, 10.4, 3.7)
+  AnswerTests: omnitest(correctExpr='expressao <- c(8.2, 5.1, 10.4, 3.7)')
+  Hint: Use expressao <- c(8.2, 5.1, 10.4, 3.7).
+
+- Class: cmd_question
+  Output: Quantos genes há no vetor genes? Use a função length().
+  CorrectAnswer: length(genes)
+  AnswerTests: omnitest(correctExpr='length(genes)')
+  Hint: Digite length(genes).
+
+- Class: mult_question
+  Output: Por que genes e expressao devem ter o mesmo comprimento neste exemplo?
+  CorrectAnswer: Cada posição de expressao corresponde ao gene na mesma posição
+  AnswerChoices: Cada posição de expressao corresponde ao gene na mesma posição;O R exige que todos os vetores tenham quatro elementos;Os nomes dos genes são valores numéricos
+  AnswerTests: omnitest(correctVal='Cada posição de expressao corresponde ao gene na mesma posição')
+  Hint: Compare o primeiro elemento de genes com o primeiro elemento de expressao.
+
+- Class: cmd_question
+  Output: Calcule a média dos valores de expressão usando mean().
+  CorrectAnswer: mean(expressao)
+  AnswerTests: omnitest(correctExpr='mean(expressao)')
+  Hint: Digite mean(expressao).
+
+- Class: cmd_question
+  Output: Crie o vetor lógico expressao_alta, que deve ser TRUE para valores de expressão maiores que 6.
+  CorrectAnswer: expressao_alta <- expressao > 6
+  AnswerTests: omnitest(correctExpr='expressao_alta <- expressao > 6')
+  Hint: Use expressao_alta <- expressao > 6.
+
+- Class: cmd_question
+  Output: Conte quantos valores são maiores que 6 usando sum() sobre o vetor lógico expressao_alta.
+  CorrectAnswer: sum(expressao_alta)
+  AnswerTests: omnitest(correctExpr='sum(expressao_alta)')
+  Hint: Em R, TRUE vale 1 e FALSE vale 0 em uma soma. Digite sum(expressao_alta).
+
+- Class: cmd_question
+  Output: Use expressao_alta dentro de colchetes para mostrar somente os genes com expressão maior que 6.
+  CorrectAnswer: genes[expressao_alta]
+  AnswerTests: omnitest(correctExpr='genes[expressao_alta]')
+  Hint: Digite genes[expressao_alta].
+
+- Class: text
+  Output: Esse filtro é um exemplo de indexação lógica, uma operação muito comum na análise de dados biológicos.
+
+- Class: cmd_question
+  Output: Reúna os dois vetores em um data frame chamado dados, com as colunas gene e expressao.
+  CorrectAnswer: dados <- data.frame(gene = genes, expressao = expressao)
+  AnswerTests: omnitest(correctExpr='dados <- data.frame(gene = genes, expressao = expressao)')
+  Hint: Use dados <- data.frame(gene = genes, expressao = expressao).
+
+- Class: cmd_question
+  Output: Use dim() para verificar o número de linhas e colunas de dados.
+  CorrectAnswer: dim(dados)
+  AnswerTests: omnitest(correctExpr='dim(dados)')
+  Hint: Digite dim(dados).
+
+- Class: cmd_question
+  Output: Use names() para listar os nomes das colunas do data frame.
+  CorrectAnswer: names(dados)
+  AnswerTests: omnitest(correctExpr='names(dados)')
+  Hint: Digite names(dados).
+
+- Class: cmd_question
+  Output: Acesse a coluna expressao usando o operador $.
+  CorrectAnswer: dados$expressao
+  AnswerTests: omnitest(correctExpr='dados$expressao')
+  Hint: Digite dados$expressao.
+
+- Class: cmd_question
+  Output: Adicione ao data frame uma coluna lógica chamada regulado, com TRUE para expressão maior que 6.
+  CorrectAnswer: dados$regulado <- dados$expressao > 6
+  AnswerTests: omnitest(correctExpr='dados$regulado <- dados$expressao > 6')
+  Hint: Use dados$regulado <- dados$expressao > 6.
+
+- Class: cmd_question
+  Output: Use table() para contar quantos genes têm TRUE e FALSE na coluna regulado.
+  CorrectAnswer: table(dados$regulado)
+  AnswerTests: omnitest(correctExpr='table(dados$regulado)')
+  Hint: Digite table(dados$regulado).
+
+- Class: cmd_question
+  Output: Mostre apenas as linhas de dados em que regulado é TRUE usando indexação por linhas.
+  CorrectAnswer: dados[dados$regulado, ]
+  AnswerTests: omnitest(correctExpr='dados[dados$regulado, ]')
+  Hint: Use dados[dados$regulado, ]. A expressão antes da vírgula seleciona as linhas.
+
+- Class: cmd_question
+  Output: Encontre o gene com a maior expressão usando which.max() para localizar sua posição.
+  CorrectAnswer: dados$gene[which.max(dados$expressao)]
+  AnswerTests: omnitest(correctExpr='dados$gene[which.max(dados$expressao)]')
+  Hint: Digite dados$gene[which.max(dados$expressao)].
+
+- Class: mult_question
+  Output: Qual gene apresentou o maior valor de expressão neste exemplo didático?
+  CorrectAnswer: EGFR
+  AnswerChoices: TP53;BRCA1;EGFR;KRAS
+  AnswerTests: omnitest(correctVal='EGFR')
+  Hint: Observe o resultado do comando anterior.
+
+- Class: text
+  Output: Exercício concluído. Você revisou vetores, operações vetorizadas, filtros lógicos e data frames, que serão usados na próxima aula de Bioinformática em R.

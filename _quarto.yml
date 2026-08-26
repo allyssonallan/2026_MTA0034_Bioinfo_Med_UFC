@@ -1,6 +1,14 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "*.qmd"
+    - "tutoriais/*.qmd"
+    - "!aulas/modelo_aula.qmd"
+    - "!tutoriais/modelo_tutorial.qmd"
+  resources:
+    - recursos/**
+    - scripts/**
 
 website:
   title: "MTA0034 · Bioinformática aplicada à medicina"

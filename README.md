@@ -22,6 +22,8 @@ Para gerar todo o site:
 quarto render
 ```
 
+Os arquivos `aulas/_aula_*.qmd` são fragmentos incluídos na página inicial. Não os renderize nem abra como páginas HTML independentes, pois os links relativos são resolvidos no contexto de `index.qmd`. Para conferir uma aula, use `quarto preview` e abra a página inicial.
+
 ## Antes do primeiro push
 
 O endereço do repositório e do site já usa o usuário `allyssonallan` em `_quarto.yml`. Ajuste apenas os links de CV Lattes e Instagram em `index.qmd`.
