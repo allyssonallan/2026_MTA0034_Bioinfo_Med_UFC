@@ -26,6 +26,7 @@
 [Script 2](scripts/Script_2.R){.text-link download=""}
 [Script 3](scripts/Script_3.R){.text-link download=""}
 [Script 4](scripts/Script_4.R){.text-link download=""}
+[Script TCGAbiolinks](scripts/Script_TCGABiolinks.R){.text-link download=""}
 [Dataset](scripts/DataFrame.xlsx){.text-link download=""}
 :::
 :::

@@ -20,7 +20,7 @@ NCBI, GEO, SRA, GTEx, 1000 Genomes e gnomAD.
 :::
 ::: {.resource-box}
 **Apoio**  
-[Material complementar](COLE_AQUI_A_URL)
+[Script TCGAbiolinks](scripts/Script_TCGABiolinks.R)
 :::
 :::
 :::
