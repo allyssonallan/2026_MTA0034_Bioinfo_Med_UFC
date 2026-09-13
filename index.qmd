@@ -210,6 +210,13 @@ Aula 08
 
 {{< include aulas/_aula_02_r_preparacao.qmd >}}
 
+{{< include aulas/_aula_03_bioinfo_r.qmd >}}
+
+{{< include aulas/_aula_04_genomica_transcriptomica.qmd >}}
+
+{{< include aulas/_aula_05_bancos_dados.qmd >}}
+
+
 <!--
 As aulas abaixo ficam comentadas enquanto o conteúdo ainda não foi ministrado.
 Para liberar uma aula manualmente, remova apenas os marcadores AULA_XX_START e AULA_XX_END.

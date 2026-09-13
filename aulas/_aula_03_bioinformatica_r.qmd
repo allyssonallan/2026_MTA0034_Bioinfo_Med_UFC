@@ -15,12 +15,12 @@ Bioconductor, manipulação de dados biomédicos e visualização.
 [Slides da aula](COLE_AQUI_A_URL)
 :::
 ::: {.resource-box}
-**Exercícios**  
-[Exercícios](COLE_AQUI_A_URL)
+**Script e Dados**  
+[TCGABiolinks script](scripts/Script_TCGABiolinks.R){.text-link download=""}
 :::
 ::: {.resource-box}
 **Apoio**  
-[Material complementar](COLE_AQUI_A_URL)
+[TCGABiolinks](https://www.cancer.gov/ccg/research/genome-sequencing/tcga)
 :::
 :::
 :::
