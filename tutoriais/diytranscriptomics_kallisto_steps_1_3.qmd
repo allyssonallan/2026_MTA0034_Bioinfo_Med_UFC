@@ -5,11 +5,13 @@ description: "Tutorial guiado e verificável para importar, filtrar, normalizar 
 toc-depth: 4
 ---
 
+>Adaptado do tutorial oficial [DIY Transcriptomics](https://diytranscriptomics.com/), com checkpoints e diagnóstico de erros. O objetivo é percorrer os **Steps 1–3**: importação, filtragem, normalização e exploração multivariada de dados de RNA-seq.
+
 ## Visão geral
 
 Neste tutorial você analisará RNA-seq de biópsias de pele de **5 pessoas com leishmaniose cutânea** e **5 controles saudáveis de área endêmica**. Começaremos pelos resultados já quantificados pelo **kallisto 0.50.1**, disponibilizados pelo próprio curso, portanto **não será necessário baixar os aproximadamente 30 GB de arquivos FASTQ nem executar o kallisto**.
 
-> Tecnicamente, os dados não foram “transformados em kallisto”: as leituras foram pseudoalinhadas e quantificadas pelo programa kallisto. Cada amostra já contém estimativas de abundância por transcrito.
+> As leituras foram pseudoalinhadas e quantificadas pelo programa kallisto. Cada amostra já contém estimativas de abundância por transcrito.
 
 Ao final, você deverá conseguir:
 
