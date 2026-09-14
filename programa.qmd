@@ -75,3 +75,11 @@ Genoma completo, multiômica, escores de risco poligênico, biópsia líquida, c
 - [PerturBase](http://www.perturbase.cn/)
 - [Human Cell Atlas](https://www.humancellatlas.org/)
 - [CZ CELLxGENE](https://cellxgene.cziscience.com/)
+
+## 9. Lista de sites para temas relacionados à biologia computacional, bioinformática e visualização de estruturas biológicas
+
+- [Awesome Bioinformatics](https://github.com/danielecook/Awesome-Bioinformatics)
+- [Awesome Computational Biology](https://github.com/inoue0426/awesome-computational-biology)
+- [Awesome Biological Visualizations](https://github.com/keller-mark/awesome-biological-visualizations)
+- [Awesome Biological Image Analysis](https://github.com/hallvaaw/awesome-biological-image-analysis)
+- [Awesome R](https://github.com/qinwf/awesome-R)
