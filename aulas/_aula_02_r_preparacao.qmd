@@ -7,11 +7,9 @@
 
 **26 de agosto de 2026**
 
-
 ::: {.resource-grid}
 ::: {.resource-box} 
 **Slides**
-
 [Introdução à linguagem R](recursos/Aula2_bioinfo_medicina_intro_R.pdf){.text-link download=""}
 :::
 ::: {.resource-box}

@@ -6,16 +6,18 @@
 ### Genômica e transcriptômica
 
 **2 de setembro de 2026**
+
 NGS e ômicas diversas.
 
 ::: {.resource-grid}
 ::: {.resource-box}
+
 **Slides**  
 [Genômica e Transcriptômica](recursos/Aula4_bioinfo_medicina_omicas.pdf){.text-link download=""}
 :::
 ::: {.resource-box}
-**Exercícios**  
-<span class="muted">Última página dos slides</span>
+**Exercícios**
+Últimas páginas do arquivo contendo os slides.
 :::
 ::: {.resource-box}
 **Apoio**  

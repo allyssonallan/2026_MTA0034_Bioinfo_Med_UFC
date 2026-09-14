@@ -7,12 +7,14 @@
 
 **31 de agosto de 2026**
 
-Bioconductor, manipulação de dados biomédicos e visualização.
+Bioconductor, TCGAbiolinks
 
 ::: {.resource-grid}
 ::: {.resource-box}
+
 **Slides**  
 [Continuação da aula passada](recursos/Aula3_bioinfo_R.pdf){.text-link download=""}
+:::
 ::: {.resource-box}
 **Script e Dados**  
 [TCGABiolinks script](scripts/Script_TCGABiolinks.R){.text-link download=""}
