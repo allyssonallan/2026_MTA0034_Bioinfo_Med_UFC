@@ -12,7 +12,7 @@ Bioconductor, manipulação de dados biomédicos e visualização.
 ::: {.resource-grid}
 ::: {.resource-box}
 **Slides**  
-[Slides da aula](COLE_AQUI_A_URL)
+[Ainda não disponível](COLE_AQUI_A_URL)
 :::
 ::: {.resource-box}
 **Script e Dados**  
