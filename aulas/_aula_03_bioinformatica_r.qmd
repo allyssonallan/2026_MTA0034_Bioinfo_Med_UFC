@@ -12,8 +12,7 @@ Bioconductor, manipulação de dados biomédicos e visualização.
 ::: {.resource-grid}
 ::: {.resource-box}
 **Slides**  
-[Ainda não disponível](COLE_AQUI_A_URL)
-:::
+[Continuação da aula passada](recursos/Aula3_bioinfo_R.pdf){.text-link download=""}
 ::: {.resource-box}
 **Script e Dados**  
 [TCGABiolinks script](scripts/Script_TCGABiolinks.R){.text-link download=""}
