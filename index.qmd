@@ -121,7 +121,7 @@ Organização do genoma humano e UCSC genome browser.
 :::
 :::
 
-::: {.schedule-row .is-next}
+::: {.schedule-row .is-live}
 ::: {.schedule-date}
 **26 AGO**  
 Aula 02
@@ -133,29 +133,34 @@ Preparação para a próxima aula: instalar os cinco cursos e começar pelo **R 
 
 [Abrir slides →](recursos/Aula2_bioinfo_medicina_intro_R.pdf){.schedule-link download=""}
 [Abrir tutorial do swirl →](tutoriais/instalacao_r_rstudio_swirl.qmd){.schedule-link}
-<span class="status status-next">Aula e tutorial disponíveis</span>
+<span class="status status-live">Conteúdo liberado</span>
 :::
 :::
 
-::: {.schedule-row}
+::: {.schedule-row .is-live}
 ::: {.schedule-date}
 **31 AGO**  
 Aula 03
 :::
 ::: {.schedule-content}
 ### Bioinformática em R
-<span class="status">Em breve</span>
+
+[Abrir script e dados →](#conteudo-liberado){.schedule-link}
+<span class="status status-live">Conteúdo liberado</span>
 :::
 :::
 
-::: {.schedule-row}
+::: {.schedule-row .is-live}
 ::: {.schedule-date}
 **02 SET**  
 Aula 04
 :::
 ::: {.schedule-content}
 ### Genômica e transcriptômica
-<span class="status">Em breve</span>
+
+[Abrir slides →](recursos/Aula4_bioinfo_medicina_omicas.pdf){.schedule-link download=""}
+[Abrir tutorial →](tutoriais/diytranscriptomics_kallisto_steps_1_3.qmd){.schedule-link}
+<span class="status status-live">Conteúdo liberado</span>
 :::
 :::
 
@@ -204,17 +209,15 @@ Aula 08
 :::
 :::
 
-## Conteúdo liberado
+## Conteúdo liberado {#conteudo-liberado}
 
 {{< include aulas/_aula_01_genetica.qmd >}}
 
 {{< include aulas/_aula_02_r_preparacao.qmd >}}
 
-{{< include aulas/_aula_03_bioinfo_r.qmd >}}
+{{< include aulas/_aula_03_bioinformatica_r.qmd >}}
 
 {{< include aulas/_aula_04_genomica_transcriptomica.qmd >}}
-
-{{< include aulas/_aula_05_bancos_dados.qmd >}}
 
 
 <!--
@@ -222,66 +225,6 @@ As aulas abaixo ficam comentadas enquanto o conteúdo ainda não foi ministrado.
 Para liberar uma aula manualmente, remova apenas os marcadores AULA_XX_START e AULA_XX_END.
 Antes de publicar, troque COLE_AQUI_A_URL pelos links reais.
 -->
-
-<!-- AULA_03_START
-::: {.lesson-card}
-::: {.lesson-number}
-03
-:::
-::: {.lesson-body}
-### Bioinformática em R
-
-**31 de agosto de 2026**
-
-Bioconductor, manipulação de dados biomédicos e visualização.
-
-::: {.resource-grid}
-::: {.resource-box}
-**Slides**  
-[Slides da aula](COLE_AQUI_A_URL)
-:::
-::: {.resource-box}
-**Exercícios**  
-[Exercícios](COLE_AQUI_A_URL)
-:::
-::: {.resource-box}
-**Apoio**  
-[Material complementar](COLE_AQUI_A_URL)
-:::
-:::
-:::
-:::
-AULA_03_END -->
-
-<!-- AULA_04_START
-::: {.lesson-card}
-::: {.lesson-number}
-04
-:::
-::: {.lesson-body}
-### Genômica e transcriptômica
-
-**2 de setembro de 2026**
-
-NGS, fluxos reprodutíveis e análise de expressão gênica diferencial.
-
-::: {.resource-grid}
-::: {.resource-box}
-**Slides**  
-[Slides da aula](COLE_AQUI_A_URL)
-:::
-::: {.resource-box}
-**Exercícios**  
-[Exercícios](COLE_AQUI_A_URL)
-:::
-::: {.resource-box}
-**Apoio**  
-[Material complementar](COLE_AQUI_A_URL)
-:::
-:::
-:::
-:::
-AULA_04_END -->
 
 <!-- AULA_05_START
 ::: {.lesson-card}

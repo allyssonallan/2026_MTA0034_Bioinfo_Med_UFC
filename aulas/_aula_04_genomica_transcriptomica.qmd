@@ -6,21 +6,20 @@
 ### Genômica e transcriptômica
 
 **2 de setembro de 2026**
-
-NGS, fluxos reprodutíveis e análise de expressão gênica diferencial.
+NGS e ômicas diversas.
 
 ::: {.resource-grid}
 ::: {.resource-box}
 **Slides**  
-[Slides da aula](COLE_AQUI_A_URL)
+[Genômica e Transcriptômica](recursos/Aula4_bioinfo_medicina_omicas.pdf){.text-link download=""}
 :::
 ::: {.resource-box}
 **Exercícios**  
-[Exercícios](COLE_AQUI_A_URL)
+<span class="muted">Última página dos slides</span>
 :::
 ::: {.resource-box}
 **Apoio**  
-[Material complementar](COLE_AQUI_A_URL)
+[Tutorial DIY Transcriptomics](tutoriais/diytranscriptomics_kallisto_steps_1_3.qmd)
 :::
 :::
 :::

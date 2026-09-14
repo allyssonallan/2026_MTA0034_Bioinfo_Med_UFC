@@ -1,0 +1,938 @@
+---
+title: "RNA-seq com dados do DIY Transcriptomics"
+subtitle: "Do download dos resultados do kallisto à exploração multivariada"
+description: "Tutorial guiado e verificável para importar, filtrar, normalizar e explorar dados de RNA-seq dos passos 1 a 3 do DIY Transcriptomics."
+toc-depth: 4
+---
+
+## Visão geral
+
+Neste tutorial você analisará RNA-seq de biópsias de pele de **5 pessoas com leishmaniose cutânea** e **5 controles saudáveis de área endêmica**. Começaremos pelos resultados já quantificados pelo **kallisto 0.50.1**, disponibilizados pelo próprio curso, portanto **não será necessário baixar os aproximadamente 30 GB de arquivos FASTQ nem executar o kallisto**.
+
+> Tecnicamente, os dados não foram “transformados em kallisto”: as leituras foram pseudoalinhadas e quantificadas pelo programa kallisto. Cada amostra já contém estimativas de abundância por transcrito.
+
+Ao final, você deverá conseguir:
+
+1. organizar e auditar os arquivos de entrada;
+2. importar as quantificações e agregar transcritos em genes com `tximport`;
+3. filtrar genes pouco expressos e normalizar as bibliotecas com TMM;
+4. avaliar relações entre amostras com agrupamento hierárquico e PCA;
+5. reconhecer os erros mais frequentes em cada etapa.
+
+### Roteiro e tempo estimado
+
+| Etapa | Produto verificável | Tempo em aula\* |
+|---|---|---:|
+| 0. Preparação do R | pacotes carregam sem erro | 20–60 min |
+| 1. Download e organização | 10 pastas, 10 `abundance.tsv` e metadados válidos | 15–40 min |
+| 2. Step 1 — importação | objeto `Txi_gene` com 10 colunas | 25–40 min |
+| 3. Step 2 — preparação | matriz filtrada e normalizada; três gráficos | 40–60 min |
+| 4. Step 3 — exploração | dendrograma, PCA e tabela exploratória | 45–70 min |
+
+\*Em computador pessoal e conexão estável. Instalação de pacotes e download são os itens mais variáveis. **Tempo total típico: 2h25–4h30**, ou aproximadamente 2h quando tudo já estiver instalado e baixado.
+
+::: {.callout-important title="Regra de ouro"}
+Não avance quando um checkpoint retornar `FALSE` ou produzir dimensões inesperadas. Copiar o erro completo e executar `traceback()` imediatamente após ele costuma ser muito mais útil do que reinstalar tudo.
+:::
+
+## Antes de começar
+
+### O que você precisa
+
+- R e RStudio já instalados;
+- conexão à internet para baixar os dados e instalar pacotes;
+- aproximadamente 2 GB livres por segurança;
+- conhecimentos básicos de objetos, funções, vetores, data frames e gráficos em R.
+
+Use as páginas oficiais [Data](https://diytranscriptomics.com/data) e [Code](https://diytranscriptomics.com/code) como referência. Os scripts oficiais indicados no site foram atualizados em 10 de abril de 2024; este roteiro foi conferido em 13 de setembro de 2026.
+
+### Crie um projeto do RStudio
+
+Crie uma pasta chamada `DIYtranscriptomics` e, no RStudio, escolha **File → New Project → Existing Directory**. Selecione essa pasta. Trabalharemos sempre a partir da raiz desse projeto.
+
+Ao terminar a etapa de download, a estrutura deverá ser semelhante a esta:
+
+```text
+DIYtranscriptomics/
+├── DIYtranscriptomics.Rproj
+├── studydesign.txt
+├── HS01/
+│   ├── abundance.tsv
+│   ├── abundance.h5
+│   └── run_info.json
+├── HS02/
+├── HS03/
+├── HS04/
+├── HS05/
+├── CL08/
+├── CL10/
+├── CL11/
+├── CL12/
+├── CL13/
+├── scripts/
+│   ├── Step1_TxImport.R
+│   ├── Step2_dataWrangling.R
+│   └── Step3_multivariate.R
+└── resultados/
+```
+
+Os três arquivos dentro de cada amostra têm funções diferentes:
+
+- `abundance.tsv`: tabela legível com identificador, comprimentos, contagem estimada e TPM;
+- `abundance.h5`: resultado binário que também pode guardar *bootstraps*;
+- `run_info.json`: parâmetros e resumo da execução do kallisto.
+
+Os scripts deste tutorial importam `abundance.tsv`. Não abra nem edite os dez arquivos de abundância em Excel.
+
+### Instale os pacotes uma única vez
+
+Execute no **Console**, não dentro de todas as análises:
+
+```r
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+
+install.packages(c(
+  "tidyverse", "matrixStats", "cowplot",
+  "DT", "plotly", "gt"
+))
+
+BiocManager::install(c(
+  "tximport", "edgeR", "ensembldb", "EnsDb.Hsapiens.v86"
+))
+```
+
+Quando o R perguntar se deseja atualizar pacotes antigos, em um computador de aula você pode escolher `a` (*all*). Isso pode aumentar bastante o tempo. Reinicie o R depois da instalação: **Session → Restart R**.
+
+O script oficial também carrega `rhdf5` e `beepr`. Como usaremos `abundance.tsv` e não precisamos emitir som, ambos são dispensáveis. Se quiser executar o arquivo original sem adaptar nenhuma linha:
+
+```r
+BiocManager::install("rhdf5")
+install.packages("beepr")
+```
+
+#### Checkpoint da preparação
+
+```r
+pacotes <- c(
+  "tidyverse", "tximport", "ensembldb", "EnsDb.Hsapiens.v86",
+  "edgeR", "matrixStats", "cowplot", "DT", "plotly", "gt"
+)
+
+status_pacotes <- vapply(
+  pacotes,
+  requireNamespace,
+  logical(1),
+  quietly = TRUE
+)
+
+status_pacotes
+stopifnot(all(status_pacotes))
+R.version.string
+BiocManager::version()
+```
+
+**Resultado esperado:** todos os valores de `status_pacotes` são `TRUE`. Guarde a saída de `sessionInfo()` se precisar pedir ajuda.
+
+### Erros possíveis na preparação
+
+::: {.callout-warning title="there is no package called ..."}
+O pacote não foi instalado na biblioteca usada por esta sessão. Rode `libPaths()` e reinstale somente o pacote ausente. Para `edgeR`, `tximport`, `ensembldb` e `EnsDb.Hsapiens.v86`, use `BiocManager::install()`, não `install.packages()`.
+:::
+
+::: {.callout-warning title="package ... is not available for this version of R"}
+Confira `R.version.string`. Atualize o R se ele for antigo e depois reinstale o Bioconductor. Não baixe arquivos de pacote aleatórios de sites de terceiros.
+:::
+
+::: {.callout-warning title="00LOCK ou Permission denied"}
+Feche outras sessões do R que estejam instalando pacotes, reinicie o RStudio e tente novamente. Em computador institucional, use uma biblioteca pessoal quando o R oferecer essa opção; não tente gravar na biblioteca do sistema sem autorização.
+:::
+
+## Etapa 1 — download e organização {#download}
+
+**Tempo estimado:** 15–40 min.  
+**Você termina esta etapa com:** 10 pastas de amostras, 10 tabelas `abundance.tsv`, um arquivo `studydesign.txt` e três scripts.
+
+### 1.1 Baixe os resultados já processados
+
+1. Abra [Data — DIY Transcriptomics](https://diytranscriptomics.com/data).
+2. Vá até **Option 2 — Download data already mapped**.
+3. Clique em **Kallisto output** e baixe o arquivo compactado do Google Drive.
+4. Descompacte-o uma única vez.
+5. Coloque as dez pastas completas `HS01` a `CL13` na raiz do projeto. Preserve os nomes e o conteúdo interno.
+6. Ainda na página **Data**, baixe o **study design file** e salve-o na raiz exatamente como `studydesign.txt`.
+
+O arquivo de metadados deve ter estas 10 linhas:
+
+| sample | sra_accession | group |
+|---|---|---|
+| HS01 | SRR8668755 | healthy |
+| HS02 | SRR8668756 | healthy |
+| HS03 | SRR8668757 | healthy |
+| HS04 | SRR8668758 | healthy |
+| HS05 | SRR8668759 | healthy |
+| CL08 | SRR8668769 | disease |
+| CL10 | SRR8668771 | disease |
+| CL11 | SRR8668772 | disease |
+| CL12 | SRR8668773 | disease |
+| CL13 | SRR8668774 | disease |
+
+### 1.2 Baixe os três scripts
+
+Na página [Code — DIY Transcriptomics](https://diytranscriptomics.com/code), baixe:
+
+- [Step1_TxImport.R](https://diytranscriptomics.com/Code/files/Step1_TxImport.R)
+- [Step2_dataWrangling.R](https://diytranscriptomics.com/Code/files/Step2_dataWrangling.R)
+- [Step3_multivariate.R](https://diytranscriptomics.com/Code/files/Step3_multivariate.R)
+
+Salve-os em `scripts/`. Alguns navegadores exibem o texto em vez de iniciar o download; nesse caso, use o botão direito sobre o link e **Salvar link como…**.
+
+### 1.3 Audite tudo no R
+
+Abra o projeto pelo arquivo `.Rproj`, reinicie o R e execute:
+
+```r
+library(tidyverse)
+
+# Deve terminar com /DIYtranscriptomics, não com /scripts.
+getwd()
+
+targets <- readr::read_tsv("studydesign.txt", show_col_types = FALSE)
+
+amostras_esperadas <- c(
+  "HS01", "HS02", "HS03", "HS04", "HS05",
+  "CL08", "CL10", "CL11", "CL12", "CL13"
+)
+
+arquivos_tsv <- file.path(targets$sample, "abundance.tsv")
+arquivos_h5  <- file.path(targets$sample, "abundance.h5")
+arquivos_json <- file.path(targets$sample, "run_info.json")
+
+stopifnot(
+  identical(names(targets), c("sample", "sra_accession", "group")),
+  nrow(targets) == 10,
+  !anyDuplicated(targets$sample),
+  setequal(targets$sample, amostras_esperadas),
+  all(table(targets$group) == 5),
+  all(file.exists(arquivos_tsv)),
+  all(file.exists(arquivos_h5)),
+  all(file.exists(arquivos_json)),
+  all(file.exists(file.path("scripts", c(
+    "Step1_TxImport.R", "Step2_dataWrangling.R", "Step3_multivariate.R"
+  )))),
+  all(file.info(arquivos_tsv)$size > 0)
+)
+
+targets
+```
+
+Confira também a estrutura de uma tabela:
+
+```r
+exemplo <- readr::read_tsv(arquivos_tsv[1], show_col_types = FALSE)
+
+names(exemplo)
+dim(exemplo)
+head(exemplo, 3)
+
+stopifnot(
+  identical(
+    names(exemplo),
+    c("target_id", "length", "eff_length", "est_counts", "tpm")
+  ),
+  nrow(exemplo) > 10000,
+  all(exemplo$est_counts >= 0),
+  all(exemplo$tpm >= 0)
+)
+```
+
+**Resultado esperado:** nenhuma mensagem de erro; três colunas nos metadados; cinco indivíduos em cada grupo; cinco colunas e muitas milhares de linhas no `abundance.tsv`.
+
+### Se o checkpoint do download falhar
+
+```r
+# Mostra exatamente quais arquivos estão faltando.
+data.frame(
+  sample = targets$sample,
+  tsv_ok = file.exists(arquivos_tsv),
+  h5_ok = file.exists(arquivos_h5),
+  json_ok = file.exists(arquivos_json)
+)
+```
+
+| Sintoma | Causa provável | Como corrigir |
+|---|---|---|
+| `cannot open file 'studydesign.txt'` | diretório de trabalho errado ou nome alterado | abra o `.Rproj`; rode `getwd()` e `list.files()`; mova o arquivo para a raiz |
+| todos os caminhos são `FALSE` | surgiu uma pasta extra após descompactar | use `list.files(recursive = TRUE)` para localizá-los e mova as **pastas completas** para a raiz |
+| só uma amostra é `FALSE` | pasta incompleta ou renomeada | baixe/descompacte novamente essa estrutura; respeite maiúsculas e zeros (`CL08`, não `CL8`) |
+| arquivo termina em `.txt.txt` | Windows ocultou a extensão | habilite a exibição de extensões e renomeie para `studydesign.txt` |
+| `read_tsv()` cria uma única coluna | metadados foram modificados ou salvos com separador diferente | baixe novamente o arquivo original; ele é separado por tabulação |
+| o ZIP não abre | download parcial | apague somente o ZIP incompleto e faça o download novamente; confirme que há espaço livre |
+
+::: {.callout-note title="Por que o `all(file.exists(...))` é indispensável?"}
+O `tximport` recebe um vetor de dez caminhos. Se apenas o primeiro existir, olhar um arquivo manualmente não detectará as nove ausências. `all()` exige que os dez testes sejam verdadeiros.
+:::
+
+## Etapa 2 — Step 1: importar e anotar {#step-1}
+
+**Tempo estimado:** 25–40 min.  
+**Você termina esta etapa com:** `Txi_gene`, contendo abundâncias, contagens e comprimentos em nível de gene.
+
+Abra `scripts/Step1_TxImport.R`. Execute por blocos com **Ctrl+Enter** (Windows/Linux) ou **Cmd+Enter** (macOS), observando o Environment após cada bloco.
+
+### 2.1 Carregue somente o necessário
+
+```r
+library(tidyverse)
+library(tximport)
+library(ensembldb)
+library(EnsDb.Hsapiens.v86)
+```
+
+`EnsDb.Hsapiens.v86` é uma anotação humana do Ensembl. Ela permite relacionar o identificador de cada transcrito do kallisto a um símbolo de gene sem consulta on-line.
+
+No script oficial, `rhdf5` é carregado embora o caminho aponte para `abundance.tsv`; `beepr` serve apenas para tocar um som. Eles podem ser comentados, assim como `beep(sound = 6)`.
+
+### 2.2 Leia os metadados e construa os caminhos
+
+```r
+targets <- readr::read_tsv("studydesign.txt", show_col_types = FALSE)
+path <- file.path(targets$sample, "abundance.tsv")
+
+# Dar nomes ao vetor garante nomes claros nas colunas importadas.
+names(path) <- targets$sample
+
+path
+all(file.exists(path))
+```
+
+**Pare se o último comando não for `TRUE`.** Resolva a organização da etapa anterior antes de importar.
+
+### 2.3 Construa a tabela transcrito → gene
+
+```r
+Tx <- transcripts(
+  EnsDb.Hsapiens.v86,
+  columns = c("tx_id", "gene_name")
+) |>
+  as_tibble() |>
+  transmute(target_id = tx_id, gene_name = gene_name) |>
+  filter(!is.na(gene_name), gene_name != "") |>
+  distinct(target_id, .keep_all = TRUE)
+
+dim(Tx)
+head(Tx)
+stopifnot(
+  identical(names(Tx), c("target_id", "gene_name")),
+  !anyNA(Tx$target_id),
+  !anyDuplicated(Tx$target_id)
+)
+```
+
+::: {.callout-warning title="Pule o bloco OPTIONAL: get annotations using BiomaRt"}
+No Step 1 oficial esse bloco demonstra anotações de **cão** (`clfamiliaris_gene_ensembl`). Ele é didático, mas não participa da análise humana e depende de acesso ao servidor Ensembl. Não execute as linhas de `listMarts()` a `Tx.dog` neste tutorial.
+:::
+
+### 2.4 Importe os dez arquivos
+
+```r
+Txi_gene <- tximport(
+  path,
+  type = "kallisto",
+  tx2gene = Tx,
+  txOut = FALSE,
+  countsFromAbundance = "lengthScaledTPM",
+  ignoreTxVersion = TRUE
+)
+```
+
+O que os argumentos fazem:
+
+- `type = "kallisto"`: interpreta as colunas do arquivo de quantificação;
+- `tx2gene = Tx`: informa a correspondência entre transcritos e genes;
+- `txOut = FALSE`: agrega os transcritos no nível de gene;
+- `countsFromAbundance = "lengthScaledTPM"`: gera contagens ajustadas a partir das abundâncias, considerando comprimento;
+- `ignoreTxVersion = TRUE`: permite casar, por exemplo, `ENST... .2` com o mesmo identificador sem sufixo de versão.
+
+### 2.5 Checkpoint completo do Step 1
+
+```r
+class(Txi_gene)
+names(Txi_gene)
+lapply(Txi_gene[c("abundance", "counts", "length")], dim)
+
+stopifnot(
+  is.list(Txi_gene),
+  all(c("abundance", "counts", "length") %in% names(Txi_gene)),
+  ncol(Txi_gene$counts) == nrow(targets),
+  identical(colnames(Txi_gene$counts), targets$sample),
+  identical(dim(Txi_gene$counts), dim(Txi_gene$abundance)),
+  identical(rownames(Txi_gene$counts), rownames(Txi_gene$abundance)),
+  all(is.finite(Txi_gene$counts)),
+  all(Txi_gene$counts >= 0),
+  nrow(Txi_gene$counts) > 10000
+)
+
+summary(colSums(Txi_gene$counts))
+summary(colSums(Txi_gene$abundance))
+
+dir.create("resultados", showWarnings = FALSE)
+saveRDS(
+  list(targets = targets, Txi_gene = Txi_gene),
+  "resultados/step1_importacao.rds"
+)
+```
+
+**Resultado esperado:** uma lista com matrizes de mesmas dimensões e exatamente 10 colunas nomeadas como as amostras. As somas variam entre bibliotecas; isso é esperado.
+
+::: {.callout-tip title="Retomar daqui em outra aula"}
+```r
+step1 <- readRDS("resultados/step1_importacao.rds")
+targets <- step1$targets
+Txi_gene <- step1$Txi_gene
+```
+:::
+
+### Erros possíveis no Step 1
+
+| Mensagem ou sintoma | Diagnóstico | Correção |
+|---|---|---|
+| `object 'targets' not found` | o bloco anterior não foi executado nesta sessão | execute desde a leitura de `studydesign.txt` |
+| `all(file.exists(path))` é `FALSE` | caminhos incompatíveis com as pastas | volte ao checkpoint do download e liste os arquivos ausentes |
+| `could not find function "transcripts"` | `ensembldb` não foi carregado | execute `library(ensembldb)` |
+| `there is no package called 'EnsDb.Hsapiens.v86'` | banco de anotação ausente | execute `BiocManager::install("EnsDb.Hsapiens.v86")` |
+| `reading in files with read_tsv` seguido de erro de colunas | um `abundance.tsv` está vazio, alterado ou não é do kallisto | identifique-o com `file.info(path)$size` e baixe novamente |
+| poucos ou nenhum transcrito correspondente | versões da referência e da anotação são incompatíveis | confirme que usou os dados oficiais e `ignoreTxVersion = TRUE`; não troque o banco de anotação no meio da análise |
+| colunas chamadas `1`, `2`, ... | vetor de arquivos não recebeu nomes | execute `names(path) <- targets$sample` e refaça a importação |
+| erro de `rhdf5` ou `beepr` | dependência opcional do script original | comente essas bibliotecas e a chamada a `beep()`, ou instale-as |
+
+Para investigar um erro de importação sem perder a mensagem original:
+
+```r
+tryCatch(
+  tximport(
+    path,
+    type = "kallisto",
+    tx2gene = Tx,
+    txOut = FALSE,
+    countsFromAbundance = "lengthScaledTPM",
+    ignoreTxVersion = TRUE
+  ),
+  error = function(e) {
+    message("Falha: ", conditionMessage(e))
+    message("Arquivos ausentes: ", paste(path[!file.exists(path)], collapse = ", "))
+  }
+)
+```
+
+## Etapa 3 — Step 2: filtrar e normalizar {#step-2}
+
+**Tempo estimado:** 40–60 min.  
+**Você termina esta etapa com:** `log2.cpm.filtered.norm`, a matriz usada no Step 3, e três gráficos comparáveis.
+
+Abra `scripts/Step2_dataWrangling.R` na mesma sessão do Step 1, ou restaure o checkpoint como mostrado acima.
+
+### 3.1 Crie o objeto do edgeR
+
+```r
+library(tidyverse)
+library(edgeR)
+library(matrixStats)
+library(cowplot)
+
+sampleLabels <- targets$sample
+myTPM <- Txi_gene$abundance
+myCounts <- Txi_gene$counts
+myDGEList <- DGEList(counts = myCounts)
+
+stopifnot(
+  identical(colnames(myCounts), sampleLabels),
+  ncol(myCounts) == 10,
+  all(myCounts >= 0)
+)
+
+colSums(myTPM)
+colSums(myCounts)
+myDGEList
+```
+
+As contagens estimadas do kallisto podem ter casas decimais; isso, por si só, não indica erro.
+
+### 3.2 Visualize antes de filtrar
+
+```r
+log2.cpm <- edgeR::cpm(myDGEList, log = TRUE)
+
+log2.cpm.df <- as_tibble(log2.cpm, rownames = "geneID")
+log2.cpm.df.pivot <- log2.cpm.df |>
+  pivot_longer(
+    cols = all_of(sampleLabels),
+    names_to = "samples",
+    values_to = "expression"
+  )
+
+p1 <- ggplot(log2.cpm.df.pivot) +
+  aes(x = samples, y = expression, fill = samples) +
+  geom_violin(trim = FALSE, show.legend = FALSE) +
+  stat_summary(
+    fun = "median", geom = "point", shape = 95,
+    size = 8, color = "black", show.legend = FALSE
+  ) +
+  labs(
+    x = "Amostra", y = "Expressão (log2 CPM)",
+    title = "Sem filtro e sem normalização"
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+p1
+```
+
+Usamos `all_of(sampleLabels)` no lugar de `cols = HS01:CL13` do script original. O resultado é o mesmo neste conjunto, mas agora o código confere explicitamente os nomes presentes nos metadados.
+
+### 3.3 Filtre genes pouco expressos
+
+```r
+cpm_sem_norm <- edgeR::cpm(myDGEList)
+
+# Diagnóstico: quantos genes têm zero em todas as amostras?
+sum(rowSums(myDGEList$counts == 0) == ncol(myDGEList))
+
+# Manter genes com CPM > 1 em pelo menos 5 amostras.
+# Cinco é o tamanho do menor grupo neste estudo.
+keepers <- rowSums(cpm_sem_norm > 1) >= min(table(targets$group))
+
+table(keepers)
+myDGEList.filtered <- myDGEList[keepers, , keep.lib.sizes = FALSE]
+dim(myDGEList.filtered)
+
+stopifnot(
+  length(keepers) == nrow(myDGEList),
+  sum(keepers) > 0,
+  sum(keepers) < nrow(myDGEList),
+  nrow(myDGEList.filtered) == sum(keepers),
+  ncol(myDGEList.filtered) == 10
+)
+```
+
+O filtro remove sinal muito baixo, que tem pouca informação e pode aumentar o custo dos testes posteriores. Ele **não escolhe genes diferentes entre grupos**, pois usa apenas nível de expressão. Se o desenho mudar, substitua `5` pelo tamanho do menor grupo biologicamente relevante.
+
+```r
+log2.cpm.filtered <- edgeR::cpm(myDGEList.filtered, log = TRUE)
+
+log2.cpm.filtered.df <- as_tibble(
+  log2.cpm.filtered,
+  rownames = "geneID"
+)
+
+log2.cpm.filtered.df.pivot <- log2.cpm.filtered.df |>
+  pivot_longer(
+    cols = all_of(sampleLabels),
+    names_to = "samples",
+    values_to = "expression"
+  )
+
+p2 <- ggplot(log2.cpm.filtered.df.pivot) +
+  aes(x = samples, y = expression, fill = samples) +
+  geom_violin(trim = FALSE, show.legend = FALSE) +
+  stat_summary(
+    fun = "median", geom = "point", shape = 95,
+    size = 8, color = "black", show.legend = FALSE
+  ) +
+  labs(
+    x = "Amostra", y = "Expressão (log2 CPM)",
+    title = "Filtrado, ainda sem normalização"
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+p2
+```
+
+### 3.4 Normalize por TMM
+
+```r
+myDGEList.filtered.norm <- calcNormFactors(
+  myDGEList.filtered,
+  method = "TMM"
+)
+
+myDGEList.filtered.norm$samples
+
+log2.cpm.filtered.norm <- edgeR::cpm(
+  myDGEList.filtered.norm,
+  log = TRUE
+)
+
+log2.cpm.filtered.norm.df <- as_tibble(
+  log2.cpm.filtered.norm,
+  rownames = "geneID"
+)
+
+log2.cpm.filtered.norm.df.pivot <- log2.cpm.filtered.norm.df |>
+  pivot_longer(
+    cols = all_of(sampleLabels),
+    names_to = "samples",
+    values_to = "expression"
+  )
+
+p3 <- ggplot(log2.cpm.filtered.norm.df.pivot) +
+  aes(x = samples, y = expression, fill = samples) +
+  geom_violin(trim = FALSE, show.legend = FALSE) +
+  stat_summary(
+    fun = "median", geom = "point", shape = 95,
+    size = 8, color = "black", show.legend = FALSE
+  ) +
+  labs(
+    x = "Amostra", y = "Expressão (log2 CPM)",
+    title = "Filtrado e normalizado por TMM"
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+cowplot::plot_grid(p1, p2, p3, labels = c("A", "B", "C"), nrow = 1)
+```
+
+TMM ajusta fatores de escala para diferenças de composição entre bibliotecas. Não significa que cada gene terá distribuição idêntica entre as amostras.
+
+### 3.5 Checkpoint completo do Step 2
+
+```r
+fatores <- myDGEList.filtered.norm$samples$norm.factors
+
+stopifnot(
+  ncol(log2.cpm.filtered.norm) == nrow(targets),
+  nrow(log2.cpm.filtered.norm) == sum(keepers),
+  identical(colnames(log2.cpm.filtered.norm), targets$sample),
+  all(is.finite(log2.cpm.filtered.norm)),
+  all(is.finite(fatores)),
+  all(fatores > 0),
+  abs(prod(fatores) - 1) < 1e-6
+)
+
+summary(as.vector(log2.cpm.filtered.norm))
+
+saveRDS(
+  list(
+    targets = targets,
+    Txi_gene = Txi_gene,
+    keepers = keepers,
+    myDGEList.filtered.norm = myDGEList.filtered.norm,
+    log2.cpm.filtered.norm = log2.cpm.filtered.norm,
+    log2.cpm.filtered.norm.df = log2.cpm.filtered.norm.df
+  ),
+  "resultados/step2_filtrado_normalizado.rds"
+)
+
+ggsave(
+  "resultados/step2_distribuicoes.png",
+  cowplot::plot_grid(p1, p2, p3, labels = c("A", "B", "C"), nrow = 1),
+  width = 14, height = 5, dpi = 300
+)
+```
+
+**Resultado esperado:** a matriz final tem 10 colunas, menos linhas que a matriz original, somente valores finitos e fatores TMM positivos. Os três painéis permitem comparar visualmente os efeitos do filtro e da normalização.
+
+### Erros possíveis no Step 2
+
+| Mensagem ou sintoma | Diagnóstico | Correção |
+|---|---|---|
+| `object 'Txi_gene' not found` | Step 1 não foi executado/restaurado | leia `resultados/step1_importacao.rds` |
+| `object 'HS01' not found` em `pivot_longer()` | seleção fixa do script foi interpretada fora do contexto esperado | use `cols = all_of(sampleLabels)` |
+| `length of 'dimnames' ... not equal to array extent` | quantidade/ordem de rótulos difere das colunas | compare `targets$sample` com `colnames(myCounts)`; não force nomes antes de resolver |
+| nenhum gene passa no filtro | limiar inadequado ou valores importados errados | examine `summary(cpm_sem_norm)` e confirme que importou `Txi_gene$counts` |
+| todos os genes passam | expressão ou comparação foi definida incorretamente | confirme os parênteses: `rowSums(cpm_sem_norm > 1) >= 5` |
+| `could not find function "rowSds"` | `matrixStats` não foi carregado | use `matrixStats::rowSds()` ou carregue o pacote; essa estatística é exploratória e não é necessária ao filtro |
+| `object 'p1' not found` no `plot_grid()` | o gráfico foi exibido, mas não atribuído | execute `p1 <- ggplot(...)`, e o mesmo para `p2` e `p3` |
+| violinos parecem pouco diferentes | normalização TMM costuma ser sutil neste gráfico | examine os fatores em `$samples$norm.factors`; ausência de mudança dramática não é falha |
+
+## Etapa 4 — Step 3: explorar as amostras {#step-3}
+
+**Tempo estimado:** 45–70 min.  
+**Você termina esta etapa com:** dendrograma, PCA, tabela de genes e gráfico interativo.
+
+Abra `scripts/Step3_multivariate.R` na mesma sessão ou restaure o checkpoint:
+
+```r
+step2 <- readRDS("resultados/step2_filtrado_normalizado.rds")
+list2env(step2, envir = .GlobalEnv)
+```
+
+### 4.1 Confirme a correspondência amostra–grupo
+
+```r
+library(tidyverse)
+library(DT)
+library(plotly)
+library(gt)
+
+# Reordena os metadados, se necessário, para coincidir com a matriz.
+targets <- targets[match(colnames(log2.cpm.filtered.norm), targets$sample), ]
+
+stopifnot(
+  !anyNA(targets$sample),
+  identical(targets$sample, colnames(log2.cpm.filtered.norm))
+)
+
+sampleLabels <- targets$sample
+group <- factor(targets$group, levels = c("healthy", "disease"))
+table(group)
+```
+
+Esta checagem evita um erro silencioso grave: colorir uma amostra com o grupo de outra por causa de ordens diferentes.
+
+### 4.2 Agrupamento hierárquico
+
+```r
+distance <- dist(
+  t(log2.cpm.filtered.norm),
+  method = "maximum"
+)
+
+clusters <- hclust(distance, method = "average")
+
+plot(
+  clusters,
+  labels = sampleLabels,
+  main = "Agrupamento hierárquico das amostras",
+  xlab = "", sub = "Distância maximum; ligação average"
+)
+
+stopifnot(
+  attr(distance, "Size") == 10,
+  length(clusters$order) == 10,
+  setequal(clusters$labels, sampleLabels)
+)
+```
+
+O dendrograma é exploratório. Proximidade sugere perfis de expressão semelhantes, mas não prova diferença clínica nem autoriza remover uma amostra.
+
+### 4.3 Análise de componentes principais
+
+```r
+pca.res <- prcomp(
+  t(log2.cpm.filtered.norm),
+  scale. = FALSE,
+  retx = TRUE
+)
+
+pc.var <- pca.res$sdev^2
+pc.per <- round(100 * pc.var / sum(pc.var), 1)
+
+pca.res.df <- as_tibble(pca.res$x, rownames = "sample") |>
+  left_join(targets, by = "sample")
+
+stopifnot(
+  nrow(pca.res.df) == 10,
+  !anyNA(pca.res.df$group),
+  all(is.finite(pca.res.df$PC1)),
+  abs(sum(pc.per) - 100) < 1
+)
+
+head(pca.res.df)
+pc.per
+```
+
+As **linhas eram genes e as colunas eram amostras**. A transposição `t()` é essencial para que o PCA trate as dez amostras como observações. `scale. = FALSE` evita dar o mesmo peso a genes muito estáveis e muito variáveis depois da transformação em log2-CPM.
+
+```r
+pca.plot <- ggplot(pca.res.df) +
+  aes(x = PC1, y = PC2, color = group, label = sample) +
+  geom_point(size = 4) +
+  geom_text(nudge_y = 1, show.legend = FALSE) +
+  stat_ellipse(linewidth = 0.7) +
+  labs(
+    x = paste0("PC1 (", pc.per[1], "%)"),
+    y = paste0("PC2 (", pc.per[2], "%)"),
+    color = "Grupo",
+    title = "PCA das amostras"
+  ) +
+  coord_fixed() +
+  theme_bw()
+
+pca.plot
+plotly::ggplotly(pca.plot)
+
+ggsave(
+  "resultados/step3_pca.png",
+  pca.plot,
+  width = 7, height = 5, dpi = 300
+)
+```
+
+Perguntas para interpretar, sem exagerar a conclusão:
+
+1. PC1 e PC2 explicam juntas qual porcentagem da variação?
+2. Os grupos ocupam regiões diferentes do gráfico?
+3. Há uma amostra afastada das demais nos dois métodos exploratórios?
+4. Há explicação técnica ou clínica nos metadados? Com apenas três colunas, talvez ainda não seja possível responder.
+
+Se `stat_ellipse()` emitir um aviso ou produzir uma elipse estranha, remova essa camada. Com apenas cinco pontos por grupo, a elipse é uma ajuda visual, não evidência estatística.
+
+### 4.4 Compare médias de forma exploratória
+
+```r
+healthy_samples <- targets$sample[targets$group == "healthy"]
+disease_samples <- targets$sample[targets$group == "disease"]
+
+mydata.df <- log2.cpm.filtered.norm.df |>
+  mutate(
+    healthy.AVG = rowMeans(pick(all_of(healthy_samples))),
+    disease.AVG = rowMeans(pick(all_of(disease_samples))),
+    diferenca_log2 = disease.AVG - healthy.AVG
+  )
+
+mydata.sort <- mydata.df |>
+  arrange(desc(diferenca_log2)) |>
+  select(geneID, healthy.AVG, disease.AVG, diferenca_log2)
+
+head(mydata.sort, 10)
+```
+
+::: {.callout-important title="Isto ainda não é expressão diferencial"}
+No script original, essa coluna se chama `LogFC`. Ela é somente a diferença entre duas médias de log2-CPM. Não há modelo estatístico, dispersão, intervalo de confiança, valor de *p* ou correção por testes múltiplos. Use-a para explorar, não para declarar genes diferencialmente expressos.
+:::
+
+Selecione os genes usados no exemplo do curso:
+
+```r
+genes_interesse <- c(
+  "MMP1", "GZMB", "IL1B", "GNLY", "IFNG",
+  "CCL4", "PRF1", "APOBEC3A", "UNC13A"
+)
+
+mydata.filter <- mydata.df |>
+  filter(geneID %in% genes_interesse) |>
+  select(geneID, healthy.AVG, disease.AVG, diferenca_log2) |>
+  arrange(desc(diferenca_log2))
+
+mydata.filter |>
+  gt() |>
+  fmt_number(columns = where(is.numeric), decimals = 1) |>
+  tab_header(
+    title = md("**Genes ligados à resposta cutânea**"),
+    subtitle = md("Comparação exploratória: leishmaniose × controles")
+  )
+```
+
+Evite copiar as notas de rodapé do script oficial usando números fixos de linha: se algum gene não estiver presente, as posições mudam e a anotação pode apontar para o gene errado.
+
+### 4.5 Tabela e gráfico interativos
+
+```r
+DT::datatable(
+  mydata.sort,
+  filter = "top",
+  options = list(pageLength = 10, searchHighlight = TRUE)
+)
+
+myplot <- ggplot(mydata.df) +
+  aes(
+    x = healthy.AVG,
+    y = disease.AVG,
+    text = paste("Gene:", geneID)
+  ) +
+  geom_point(size = 1, alpha = 0.6) +
+  geom_abline(slope = 1, intercept = 0, linetype = 2) +
+  labs(
+    x = "Média nos controles (log2 CPM)",
+    y = "Média nos casos (log2 CPM)",
+    title = "Expressão média: casos × controles"
+  ) +
+  coord_equal() +
+  theme_bw()
+
+plotly::ggplotly(myplot, tooltip = "text")
+```
+
+### 4.6 Checkpoint completo do Step 3
+
+```r
+stopifnot(
+  nrow(pca.res$x) == nrow(targets),
+  identical(rownames(pca.res$x), targets$sample),
+  nrow(mydata.df) == nrow(log2.cpm.filtered.norm),
+  all(c("healthy.AVG", "disease.AVG", "diferenca_log2") %in% names(mydata.df)),
+  nrow(mydata.filter) > 0,
+  all(is.finite(mydata.df$diferenca_log2)),
+  file.exists("resultados/step3_pca.png")
+)
+
+write_csv(mydata.sort, "resultados/step3_comparacao_exploratoria.csv")
+saveRDS(pca.res, "resultados/step3_pca.rds")
+
+sessionInfo()
+```
+
+**Resultado esperado:** dez pontos no PCA, nenhuma amostra sem grupo, uma tabela ordenada por diferença de médias e os arquivos `step3_pca.png`, `step3_comparacao_exploratoria.csv` e `step3_pca.rds` em `resultados/`.
+
+### Erros possíveis no Step 3
+
+| Mensagem ou sintoma | Diagnóstico | Correção |
+|---|---|---|
+| `object 'log2.cpm.filtered.norm' not found` | Step 2 não está na sessão | restaure `resultados/step2_filtrado_normalizado.rds` |
+| PCA mostra milhares de pontos | a matriz não foi transposta | use `prcomp(t(log2.cpm.filtered.norm), ...)` |
+| cores não correspondem às amostras | ordem dos metadados e matriz divergiu | use `match()` e exija `identical()` como em 4.1 |
+| `cannot rescale a constant/zero column` ou valores infinitos | matriz errada ou genes invariantes ao usar `scale. = TRUE` | use a matriz final e `scale. = FALSE` |
+| `Too few points to calculate an ellipse` | grupo pequeno ou ausente após pareamento | confira `table(group)`; remova `stat_ellipse()` |
+| genes esperados não aparecem | filtro, anotação ou versão do banco mudou | rode `setdiff(genes_interesse, mydata.df$geneID)`; não invente linhas ausentes |
+| erro em `cells_body(rows = ...)` no exemplo oficial | notas usam posições fixas que não existem | omita as notas ou selecione linhas por `geneID`, nunca por posição presumida |
+| tabela/gráfico interativo não aparece no painel Plots | são *widgets* HTML | veja o painel Viewer ou abra o resultado em navegador |
+
+## Auditoria final das quatro etapas
+
+Execute de uma vez. Se aparecer `AUDITORIA CONCLUÍDA`, os objetos essenciais e os arquivos exportados estão coerentes.
+
+```r
+auditoria <- tibble::tibble(
+  etapa = c("download", "step 1", "step 2", "step 3"),
+  ok = c(
+    nrow(targets) == 10 && all(file.exists(file.path(targets$sample, "abundance.tsv"))),
+    ncol(Txi_gene$counts) == 10 && all(is.finite(Txi_gene$counts)),
+    ncol(log2.cpm.filtered.norm) == 10 && all(is.finite(log2.cpm.filtered.norm)),
+    nrow(pca.res$x) == 10 && all(is.finite(pca.res$x))
+  )
+)
+
+print(auditoria)
+stopifnot(all(auditoria$ok))
+message("AUDITORIA CONCLUÍDA: download e Steps 1–3 estão consistentes.")
+```
+
+Antes de encerrar, sua pasta `resultados/` deve conter:
+
+```text
+resultados/
+├── step1_importacao.rds
+├── step2_filtrado_normalizado.rds
+├── step2_distribuicoes.png
+├── step3_comparacao_exploratoria.csv
+├── step3_pca.png
+└── step3_pca.rds
+```
+
+## Como pedir ajuda de forma eficiente
+
+Envie estas quatro coisas, sem capturas cortadas:
+
+```r
+getwd()
+sessionInfo()
+traceback()
+data.frame(path, existe = file.exists(path), tamanho = file.info(path)$size)
+```
+
+Inclua também a mensagem de erro completa e diga qual foi o último checkpoint que passou. Nunca compartilhe dados clínicos identificáveis; este conjunto didático usa apenas identificadores públicos.
+
+## O que você aprendeu — e o que ainda falta
+
+Você partiu de quantificações por transcrito, agregou-as em genes, removeu sinal muito baixo, normalizou bibliotecas e explorou semelhanças entre amostras. Ainda **não** realizou um teste formal de expressão diferencial. Esse próximo passo exige uma matriz de desenho, um modelo estatístico e controle da taxa de falsos descobrimentos.
+
+## Fontes
+
+- [DIY Transcriptomics — Data](https://diytranscriptomics.com/data): conjunto didático, metadados e resultados do kallisto.
+- [DIY Transcriptomics — Code](https://diytranscriptomics.com/code): scripts oficiais Steps 1–3.
+- [Manual do kallisto](https://pachterlab.github.io/kallisto/manual): formato e funcionamento da quantificação.
+- [Documentação do tximport](https://bioconductor.org/packages/tximport): importação e sumarização de quantificações em R/Bioconductor.
+- [Guia do edgeR](https://bioconductor.org/packages/edgeR): filtragem, normalização e análise de dados de expressão.
