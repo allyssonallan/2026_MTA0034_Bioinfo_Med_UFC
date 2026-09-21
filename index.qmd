@@ -224,9 +224,9 @@ Aula 08
 
 {{< include aulas/_aula_04_genomica_transcriptomica.qmd >}}
 
-{{< include aulas/_aula_05_bancos_omicas.qmd >}}
+{{< include aulas/_aula_05_bancos_dados.qmd >}}
 
-{{< include aulas/_aula_06_oncologia_precisao.qmd >}}
+{{< include aulas/_aula_06_oncologia.qmd >}}
 
 {{< include aulas/_aula_07_doencas_raras.qmd >}}
 
