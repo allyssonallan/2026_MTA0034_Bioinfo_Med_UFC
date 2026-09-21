@@ -183,7 +183,7 @@ Aula 06
 :::
 ::: {.schedule-content}
 ### Oncologia de precisão
-[Abrir slides →](recursos/Aula6_bioinfo_oncologia.pdf){.schedule-link}
+[Abrir slides →](recursos/Aula6_onco_de_precisao.pdf){.schedule-link}
 <span class="status status-live">Conteúdo liberado</span>
 :::
 :::
