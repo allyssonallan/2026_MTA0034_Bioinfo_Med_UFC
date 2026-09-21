@@ -171,7 +171,8 @@ Aula 05
 :::
 ::: {.schedule-content}
 ### Bancos de dados de ômicas e clínicos
-<span class="status">Em breve</span>
+[Abrir slides →](recursos/Aula5_bioinfo_bancos_omicos.pdf){.schedule-link}
+<span class="status status-live">Conteúdo liberado</span>
 :::
 :::
 
@@ -182,7 +183,8 @@ Aula 06
 :::
 ::: {.schedule-content}
 ### Oncologia de precisão
-<span class="status">Em breve</span>
+[Abrir slides →](recursos/Aula6_bioinfo_oncologia.pdf){.schedule-link}
+<span class="status status-live">Conteúdo liberado</span>
 :::
 :::
 
@@ -193,7 +195,9 @@ Aula 07
 :::
 ::: {.schedule-content}
 ### Doenças raras
-<span class="status">Em breve</span>
+
+[Abrir slides →](recursos/Aula7_bioinfo_raras.pdf){.schedule-link}
+<span class="status status-live">Conteúdo liberado</span>
 :::
 :::
 
@@ -204,7 +208,8 @@ Aula 08
 :::
 ::: {.schedule-content}
 ### Medicina de precisão e implementação clínica
-<span class="status">Em breve</span>
+[Abrir slides →](recursos/Aula8_bioinfo_ACMG.pdf){.schedule-link}
+<span class="status status-live">Conteúdo liberado</span>
 :::
 :::
 :::
@@ -218,6 +223,14 @@ Aula 08
 {{< include aulas/_aula_03_bioinformatica_r.qmd >}}
 
 {{< include aulas/_aula_04_genomica_transcriptomica.qmd >}}
+
+{{< include aulas/_aula_05_bancos_omicas.qmd >}}
+
+{{< include aulas/_aula_06_oncologia_precisao.qmd >}}
+
+{{< include aulas/_aula_07_doencas_raras.qmd >}}
+
+{{< include aulas/_aula_08_medicina_precisao.qmd >}}
 
 
 <!--

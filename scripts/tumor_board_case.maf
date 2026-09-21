@@ -1,0 +1,14 @@
+Hugo_Symbol	Chromosome	Start_Position	End_Position	Reference_Allele	Tumor_Seq_Allele1	Tumor_Seq_Allele2	Variant_Classification	Variant_Type	Tumor_Sample_Barcode	HGVSp_Short	t_ref_count	t_alt_count	NCBI_Build
+BRAF	chr7	140753336	140753336	A	A	T	Missense_Mutation	SNP	TB-MEL-01	p.V600E	55	45	GRCh38
+TP53	chr17	7675088	7675088	C	C	T	Missense_Mutation	SNP	TB-MEL-01	p.R175H	62	38	GRCh38
+NOTCH1	chr9	139399430	139399430	C	C	T	Missense_Mutation	SNP	TB-MEL-01	p.V1578M (ilustrativa)	78	22	GRCh38
+TTN	chr2	178525989	178525989	G	G	A	Missense_Mutation	SNP	TB-MEL-01	p.X0000X (ilustrativa)	131	2	GRCh38
+BRAF	chr7	140753336	140753336	A	A	T	Missense_Mutation	SNP	TB-CRC-01	p.V600E	52	48	GRCh38
+APC	chr5	112841000	112841000	C	C	T	Nonsense_Mutation	SNP	TB-CRC-01	p.R1450* (ilustrativa)	52	48	GRCh38
+MSH2	chr2	47410221	47410221	A	A	-	Frame_Shift_Del	DEL	TB-CRC-01	p.E159fs (ilustrativa)	65	35	GRCh38
+EGFR	chr7	55191822	55191822	T	T	G	Missense_Mutation	SNP	TB-LUAD-01	p.L858R	58	42	GRCh38
+TP53	chr17	7673802	7673802	G	G	A	Missense_Mutation	SNP	TB-LUAD-01	p.R273H	60	40	GRCh38
+KRAS	chr12	25245350	25245350	C	C	A	Missense_Mutation	SNP	TB-CRC-02	p.G12C	56	44	GRCh38
+TP53	chr17	7675088	7675088	C	C	T	Missense_Mutation	SNP	TB-CRC-02	p.R175H	61	39	GRCh38
+PIK3CA	chr3	179234297	179234297	A	A	G	Missense_Mutation	SNP	TB-BRCA-01	p.H1047R	67	33	GRCh38
+BRCA2	chr13	32340000	32340000	C	C	T	Nonsense_Mutation	SNP	TB-BRCA-01	p.Q1000* (ilustrativa)	50	50	GRCh38

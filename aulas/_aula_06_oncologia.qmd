@@ -12,15 +12,15 @@ Painéis, variantes somáticas, bancos de conhecimento e contexto ambiental.
 ::: {.resource-grid}
 ::: {.resource-box}
 **Slides**  
-[Slides da aula](COLE_AQUI_A_URL)
+[Slides da aula](recursos/Aula6_bioinfo_onco_de_precisao.pdf){.text-link download=""}
 :::
 ::: {.resource-box}
-**Exercícios**  
-[Exercícios](COLE_AQUI_A_URL)
+**Exercício**  
+[Script](scripts/Script_aula_oncologia_precisao_hands_on.R)
 :::
 ::: {.resource-box}
-**Apoio**  
-[Material complementar](COLE_AQUI_A_URL)
+**Apoio**
+[Material complementar](scripts/tumor_board_case.maf)
 :::
 :::
 :::

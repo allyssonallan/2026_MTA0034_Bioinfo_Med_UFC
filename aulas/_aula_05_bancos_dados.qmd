@@ -10,7 +10,7 @@ NCBI, GEO, SRA, GTEx, 1000 Genomes e gnomAD.
 ::: {.resource-grid}
 ::: {.resource-box}
 **Slides**  
-[Slides da aula](COLE_AQUI_A_URL)
+[Slides da aula](recursos/Aula5_bioinfo_bancos_omicos.pdf){.text-link download=""}
 :::
 ::: {.resource-box}
 **Exercícios**  
