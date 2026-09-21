@@ -3,24 +3,26 @@
 08
 :::
 ::: {.lesson-body}
-### Medicina de precisão e implementação clínica
+### ACMG/AMP e medicina de precisão
 
 **21 de setembro de 2026**
 
-Genoma completo, multiômica, farmacogenômica, PRS, biópsia líquida, célula única e Perturb-seq.
+Priorização de variantes e classificação clínica.
 
 ::: {.resource-grid}
 ::: {.resource-box}
 **Slides**  
-[Slides da aula](COLE_AQUI_A_URL)
+[Slides da aula](recursos/Aula8_bioinfo_ACMG.pdf){.text-link download=""}
 :::
 ::: {.resource-box}
 **Exercícios**  
-[Exercícios](COLE_AQUI_A_URL)
+[Exercícios](exercicios/swirl/Exercicio_Aula8.pdf){.text-link download=""}
 :::
 ::: {.resource-box}
 **Apoio**  
-[Material complementar](COLE_AQUI_A_URL)
+[Richards et al., 2015 - Variantes germintativas](https://doi.org/10.1038/gim.2015.30)
+[Harak et al., 2022 - Variantes somáticas](https://doi.org/10.1016/j.gim.2022.01.001)
+[Lee et al., 2025 - achados secundários](https://doi.org/10.1016/j.gim.2025.101454)
 :::
 :::
 :::
